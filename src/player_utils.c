@@ -6,11 +6,11 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 21:04:10 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/15 00:55:06 by plichota         ###   ########.fr       */
+/*   Updated: 2025/08/07 15:30:59 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "cub3D.h"
 
 // alloco prima y altezza (numero di righe)
 // poi x (lunghezza)

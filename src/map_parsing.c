@@ -6,11 +6,11 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 15:00:26 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/15 00:47:20 by plichota         ###   ########.fr       */
+/*   Updated: 2025/08/07 15:30:59 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "cub3D.h"
 
 void	count_elements(t_window *win)
 {
