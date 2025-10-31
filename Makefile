@@ -32,14 +32,13 @@ CFLAGS = -Wall -Werror -Wextra -g -I$(HEADERS_DIR) -I$(SRC_DIR) -I$(LIBFT_DIR) -
 LDFLAGS = -L$(LIBFT_DIR) -lft -L$(MINILIBX_DIR) -lmlx -lX11 -lXext -lm
 
 # Sources
-SRCS =	$(SRC_DIR)/main.c \
-		$(SRC_DIR)/hooks.c \
-		$(SRC_DIR)/utils.c \
-		$(SRC_DIR)/player_utils.c \
-		$(SRC_DIR)/program_utils.c \
-		$(SRC_DIR)/map_utils.c \
-		$(SRC_DIR)/parsing.c \
-		$(SRC_DIR)/map_parsing.c
+SRCS =	$(SRC_DIR)/map.c \
+		$(SRC_DIR)/main.c \
+		$(SRC_DIR)/free.c \
+		$(SRC_DIR)/config.c \
+		$(SRC_DIR)/player.c \
+		$(SRC_DIR)/valiadte.c \
+		
 
 LIBFT = $(LIBFT_DIR)/libft.a
 MINILIBX = $(MINILIBX_DIR)/libmlx.a
