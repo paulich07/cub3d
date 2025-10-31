@@ -6,7 +6,7 @@
 /*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 10:47:06 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/10/31 17:07:09 by sel-khao         ###   ########.fr       */
+/*   Updated: 2025/10/31 18:12:34 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ char	*extract_path(char *line)
 	path[j] = '\0';
 	return (path);
 }
-
+/* 
 int	error_handling(char *file, t_config *config)
 {
 	int		err;
@@ -95,7 +95,7 @@ int	error_handling(char *file, t_config *config)
 	if (err == 4)
 		return (write(2, "Error\n", 6), -1);
 	return (0);
-}
+} */
 
 int	cleaning(char *line, int fd, t_config *config)
 {
@@ -117,17 +117,12 @@ int	configure(char *file, t_config *config)
 		return (write(2, "invalid file\n", 13), -1);
 	fill_map(file, config);
 	fd = open(file, O_RDONLY);
-	line = get_next_line(fd);
-	while (line)
+	while (line = get_next_line(fd))
 	{
 		if (ft_strncmp(line, "NO ", 3) == 0)
 		{
 			if (config->no != NULL)
-			{
-				free(line);
-				close(fd);
-				return (3);
-			}
+				return (cleaning(line, fd, config));
 			config->no = extract_path(line);
 			if (config->no == NULL)
 				return (cleaning(line, fd, config));
@@ -135,11 +130,7 @@ int	configure(char *file, t_config *config)
 		else if (ft_strncmp(line, "SO ", 3) == 0)
 		{
 			if (config->so != NULL)
-			{
-				free(line);
-				close(fd);
-				return (3);
-			}
+				return (cleaning(line, fd, config));
 			config->so = extract_path(line);
 			if (config->so == NULL)
 				return (cleaning(line, fd, config));
@@ -147,11 +138,7 @@ int	configure(char *file, t_config *config)
 		else if (ft_strncmp(line, "WE ", 3) == 0)
 		{
 			if (config->we != NULL)
-			{
-				free(line);
-				close(fd);
-				return (3);
-			}
+				return (cleaning(line, fd, config));
 			config->we = extract_path(line);
 			if (config->we == NULL)
 				return (cleaning(line, fd, config));
@@ -159,11 +146,7 @@ int	configure(char *file, t_config *config)
 		else if (ft_strncmp(line, "EA ", 3) == 0)
 		{
 			if (config->ea != NULL)
-			{
-				free(line);
-				close(fd);
-				return (3);
-			}
+				return (cleaning(line, fd, config));
 			config->ea = extract_path(line);
 			if (config->ea == NULL)
 				return (cleaning(line, fd, config));
