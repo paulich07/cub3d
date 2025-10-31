@@ -6,16 +6,14 @@
 /*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 15:15:37 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/10/31 15:04:56 by sel-khao         ###   ########.fr       */
+/*   Updated: 2025/10/31 16:48:50 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
 
-void free_config(t_config *config)
+void	free_config(t_config *config)
 {
-	if (!config)
-		return ;
 	if (config->no)
 	{
 		free(config->no);

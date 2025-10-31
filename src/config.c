@@ -6,7 +6,7 @@
 /*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 10:47:06 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/10/31 16:24:14 by sel-khao         ###   ########.fr       */
+/*   Updated: 2025/10/31 17:07:09 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,20 +30,25 @@ int	check_open(char *file)
 
 //more or less 3 num X
 //values outside 0-255
-int parse_rgb(char *line)
+int	parse_rgb(char *line)
 {
 	int		r;
 	int		g;
 	int		b;
 	char	**split;
 	char	*str;
-	
+
 	str = line + 1; //skip f or c
 	while (*str == ' ')
 		str++;
 	split = ft_split(str, ',');
 	if (!split || !split[0] || !split[1] || !split[2] || split[3])
-		return (write(2, "Error Rgb\n", 9), -1);
+		return (write(2, "Error RGB/n", 9), -1);
+	if (!valid_nbr(split[0]) || !valid_nbr(split[1]) || !valid_nbr(split[2]))
+	{
+		ft_free(split);
+		return (write(2, "RGB must be numbers\n", 20), -1);
+	}
 	r = ft_atoi(split[0]);
 	g = ft_atoi(split[1]);
 	b = ft_atoi(split[2]);
@@ -64,7 +69,7 @@ char	*extract_path(char *line)
 	char	*path;
 
 	i = 2;
-	while(line[i] == ' ' || line[i] == '\t')
+	while (line[i] == ' ' || line[i] == '\t')
 		i++;
 	j = 0;
 	path = malloc(sizeof(char) * (ft_strlen(line + i) + 1));
@@ -92,7 +97,7 @@ int	error_handling(char *file, t_config *config)
 	return (0);
 }
 
-int cleaning(char *line, int fd, t_config *config)
+int	cleaning(char *line, int fd, t_config *config)
 {
 	free(line);
 	close(fd);
@@ -112,7 +117,8 @@ int	configure(char *file, t_config *config)
 		return (write(2, "invalid file\n", 13), -1);
 	fill_map(file, config);
 	fd = open(file, O_RDONLY);
-	while ((line = get_next_line(fd)))
+	line = get_next_line(fd);
+	while (line)
 	{
 		if (ft_strncmp(line, "NO ", 3) == 0)
 		{
@@ -179,7 +185,7 @@ int	configure(char *file, t_config *config)
 			if (config->ceiling == -1)
 				return (cleaning(line, fd, config));
 			config->ceiling_set = 1;
-		}	
+		}
 		else if (line[0] && line[0] != '\n')
 		{
 			config->map[i] = remove_newline(ft_strdup(line));
@@ -190,8 +196,8 @@ int	configure(char *file, t_config *config)
 		free(line);
 	}
 	if (!config->ceiling_set || !config->floor_set || !config->no
-		|| !config->we || !config->ea || !config->so)//0,0,0,0 is valid tho
-		return (4);//non existing error
+		|| !config->we || !config->ea || !config->so)
+		return (4);
 	close (fd);
 	return (0);
 }

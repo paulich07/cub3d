@@ -6,7 +6,7 @@
 /*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 15:28:01 by plichota          #+#    #+#             */
-/*   Updated: 2025/10/31 16:17:32 by sel-khao         ###   ########.fr       */
+/*   Updated: 2025/10/31 16:42:55 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,17 @@ typedef struct s_config
 {
 	size_t		h;
 	size_t		l;
-	int		x;
-	int		y;
-	char	**map;
-	char	*no;//texture
-	char	*so;
-	char	*we;
-	char	*ea;
-	int		floor_set;
-	int		floor;//color
-	int		ceiling_set;
-	int		ceiling;
+	int			x;
+	int			y;
+	char		**map;
+	char		*no;//texture
+	char		*so;
+	char		*we;
+	char		*ea;
+	int			floor_set;
+	int			floor;//color
+	int			ceiling_set;
+	int			ceiling;
 }	t_config;
 
 int		check_player(int p);

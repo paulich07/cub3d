@@ -35,10 +35,10 @@ LDFLAGS = -L$(LIBFT_DIR) -lft -L$(MINILIBX_DIR) -lmlx -lX11 -lXext -lm
 SRCS =	$(SRC_DIR)/map.c \
 		$(SRC_DIR)/main.c \
 		$(SRC_DIR)/free.c \
+		$(SRC_DIR)/close.c \
 		$(SRC_DIR)/config.c \
 		$(SRC_DIR)/player.c \
 		$(SRC_DIR)/valiadte.c \
-		
 
 LIBFT = $(LIBFT_DIR)/libft.a
 MINILIBX = $(MINILIBX_DIR)/libmlx.a

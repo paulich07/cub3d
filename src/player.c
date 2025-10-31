@@ -6,7 +6,7 @@
 /*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 09:01:17 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/10/31 14:46:18 by sel-khao         ###   ########.fr       */
+/*   Updated: 2025/10/31 16:44:39 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	check_player(int p)
 	return (0);
 }
 
-int find_player(t_config *config)
+int	find_player(t_config *config)
 {
 	int	x;
 	int	y;

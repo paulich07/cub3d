@@ -2,17 +2,12 @@ Missing Validations
 
 Configuration elements validation:
 
-Check that all 6 elements exist (NO, SO, WE, EA, F, C)
-Check for duplicate elements
 Validate texture file paths exist and are .xpm files
 
 
 RGB parsing improvements:
 
-Check for extra whitespace/characters after RGB values
 Validate no negative signs in input
-Better error messages
-
 
 Map validation:
 
@@ -20,14 +15,6 @@ Flood fill algorithm to check map is properly closed (spaces adjacent to walkabl
 Check map is rectangular or handle jagged edges with spaces
 Validate minimum map size (3x3)
 Check for holes in walls
-
-
-Error handling:
-
-Memory leak in configure() if parsing fails mid-way
-No cleanup on error returns in main()
-Missing error messages for specific failures
-
 
 Edge cases:
 

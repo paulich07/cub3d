@@ -6,7 +6,7 @@
 /*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 08:52:41 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/10/31 16:17:58 by sel-khao         ###   ########.fr       */
+/*   Updated: 2025/10/31 16:54:12 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ void	initial(t_config *config)
 	config->ceiling_set = 0;
 	config->floor_set = 0;
 	config->floor = -1;
-	config->ceiling = -1;//or booleano to check it has floor and cieling. valid (black: 0,0,0)
+	config->ceiling = -1;
 }
 
-int		count_line(char *file, t_config *config)
+int	count_line(char *file, t_config *config)
 {
 	int		i;
 	int		fd;
@@ -41,12 +41,15 @@ int		count_line(char *file, t_config *config)
 	fd = open(file, O_RDONLY);
 /* 	config->l = ft_strlen(line) -1;
 	config->h = 0; //u gotta fill the map, 3x3 is minimum */
-	while ((line = get_next_line(fd)))
+	line = get_next_line(fd);
+	while ((line))
 	{
-		if (!(ft_strncmp(line, "NO ", 3) == 0 || ft_strncmp(line, "SO ", 3) == 0
-			|| ft_strncmp(line, "EA ", 3) == 0 || line[0] == '\n'
-			|| ft_strncmp(line, "WE ", 3) == 0
-			|| ft_strncmp(line, "F ", 2) == 0 || ft_strncmp(line, "C ", 2) == 0))
+		if (!(ft_strncmp(line, "NO ", 3) == 0
+				|| ft_strncmp(line, "SO ", 3) == 0
+				|| ft_strncmp(line, "EA ", 3) == 0 || line[0] == '\n'
+				|| ft_strncmp(line, "WE ", 3) == 0
+				|| ft_strncmp(line, "F ", 2) == 0
+				|| ft_strncmp(line, "C ", 2) == 0))
 			i++;
 		free(line);
 	}
