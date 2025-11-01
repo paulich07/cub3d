@@ -3,48 +3,48 @@
 /*                                                        :::      ::::::::   */
 /*   close.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
+/*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 16:47:17 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/10/31 16:47:40 by sel-khao         ###   ########.fr       */
+/*   Updated: 2025/11/01 21:10:22 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	dest_img(t_config *config)
-{
-	if (config->floor)
-		mlx_destroy_image(config->map, config->floor);
-	if (config->ceiling)
-		mlx_destroy_image(config->map, config->ceiling);
-	if (config->ea)
-		mlx_destroy_image(config->map, config->ea);
-	if (config->so)
-		mlx_destroy_image(config->map, config->so);
-	if (config->we)
-		mlx_destroy_image(config->map, config->we);
-	if (config->no)
-		mlx_destroy_image(config->map, config->no);
-	dest_win(config);
-}
+// void	dest_img(t_window *win)
+// {
+// 	if (win->floor)
+// 		mlx_destroy_image(win->map, win->floor);
+// 	if (win->ceiling)
+// 		mlx_destroy_image(win->map, win->ceiling);
+// 	if (win->ea)
+// 		mlx_destroy_image(win->map, win->ea);
+// 	if (win->so)
+// 		mlx_destroy_image(win->map, win->so);
+// 	if (win->we)
+// 		mlx_destroy_image(win->map, win->we);
+// 	if (win->no)
+// 		mlx_destroy_image(win->map, win->no);
+// 	dest_win(win);
+// }
 
-void	dest_win(t_config *config)
+void	destroy_win(t_window *win)
 {
-	if (!config)
+	if (!win)
 		return ;
-	if (config->map)
-		ft_free(config->map);
-	if (config->map)
+	if (win->map)
+		ft_free_mxt(win->map);
+	if (win->map)
 	{
-		mlx_destroy_display(config->map);
-		free(config->map);
+		mlx_destroy_display(win->map);
+		free(win->map);
 	}
 }
 
-int	close_win(t_config *config)
+int	close_win(t_window *win)
 {
-	dest_img(config);
+	dest_img(win);
 	exit(1);
 	return (0);
 }

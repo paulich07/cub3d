@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
+/*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 15:28:01 by plichota          #+#    #+#             */
-/*   Updated: 2025/10/31 16:42:55 by sel-khao         ###   ########.fr       */
+/*   Updated: 2025/11/01 21:08:58 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,46 +18,70 @@
 # endif
 
 # include "libft.h"
-//# include "mlx.h"
+# include "mlx.h"
 # include <X11/keysym.h>
 # include <X11/X.h>
 # include <fcntl.h>
 
-typedef struct s_config
+typedef struct s_data
 {
-	size_t		h;
-	size_t		l;
-	int			x;
-	int			y;
+	void		*mlx;
+	void		*win;
+	int			map_height;
+	int			map_width;
+	float		pos_x;
+	float		pos_y;
 	char		**map;
-	char		*no;//texture
-	char		*so;
-	char		*we;
-	char		*ea;
+	int			rgb_floor;
+	int			rgb_ceiling;
 	int			floor_set;
-	int			floor;//color
 	int			ceiling_set;
-	int			ceiling;
-}	t_config;
+	char		*path_no;
+	char		*path_so;
+	char		*path_we;
+	char		*path_ea;
+}	t_window;
 
-int		check_player(int p);
-int		find_player(t_config *config);
-void	set_hl(t_config *config);
-int		check_wall(t_config *config);
-int		sign(t_config *config);
-char	*remove_newline(char *line);
-char	*extract_path(char *line);
-void	initial(t_config *config);
+// Filename parsing
+int		is_valid_filename(char *filename);
+int		is_directory(char *filename);
+int		is_valid_file(char *filename);
 
-int		cleaning(char *line, int fd, t_config *config);
-void	free_config(t_config *config);
-void	ft_free(char **str);
-
+// Parsing
 int		parse_rgb(char *line);
-int		check_open(char *file);
-int		configure(char *file, t_config *config);
-int		count_line(char *file, t_config *config);
-void	fill_map(char *file, t_config *config);
-//int		error_handling(char *file, t_config *config);
+char	*extract_path(char *line);
+int		parse_paths(t_window *win, char *filename);
+
+// Map parsing
+int		is_valid_map_size(t_window *win);
+void	count_map_size(t_window *win, char *filename);
+void	check_and_allocate_map(t_window *win, char *filename);
+
+// Textures
+int		check_texture(char *name, char *path);
+
+// Map utils
+void	deallocate_map(char **map, int height);
+int		allocate_map_from_file(t_window *win, int fd);
+
+// Program utils
+void	exit_program(t_window *win, char *s, int error);
+
+// Fill Map
+int		count_line(char *file, t_window *config);
+void	fill_map(char *file, t_window *config);
+
+// Map validation
+int		check_player(int p);
+int		find_player(t_window *config);
+
+int		check_wall(t_window *config);
+int		sign(t_window *config);
+// char	*remove_newline(char *line);
+
+// Cleaning
+int		cleaning(t_window *win, char *line, int fd);
+void	free_win(t_window *win);
+void	ft_free_mxt(char **str);
 
 #endif
