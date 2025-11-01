@@ -6,29 +6,18 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 10:47:06 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/11/01 21:11:28 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/01 21:14:54 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
+// TO DO
 int is_valid_rgb(char *str)
 {
-	int		i;
-	int		j;
+	(void)str;
 
-	i = 0;
-	while (str[i] && str[i] != '\n' && str[i] != ' ')
-		i++;
-	j = 0;
-	while (str[i] && str[i] != '\n' && str[i] != ' ')
-	{
-		if (str[i] < '0' || str[i] > '9')
-			return (0);
-		i++;
-		j++;
-	}
-	return (j == 3 && i == j);
+	return (1);
 }
 
 // more or less 3 num X
