@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 15:28:01 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/01 21:08:58 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/01 21:35:47 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <X11/keysym.h>
 # include <X11/X.h>
 # include <fcntl.h>
+# include <stdio.h>
 
 typedef struct s_data
 {

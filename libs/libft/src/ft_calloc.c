@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plichota <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 15:37:47 by plichota          #+#    #+#             */
-/*   Updated: 2024/11/25 15:37:48 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/01 21:51:44 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	size_t			i;
 
 	i = 0;
-	if (nmemb * size > 2147483647)
-		return (NULL);
 	p = malloc(nmemb * size);
 	if (!p)
 		return (NULL);

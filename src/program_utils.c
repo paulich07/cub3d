@@ -6,15 +6,15 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 17:20:24 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/01 20:49:26 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/01 21:49:03 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-
 void	exit_program(t_window *win, char *s, int error)
 {
+	ft_printf("EXIT PROGRAM\n");
 	deallocate_map(win->map, win->map_height);
 	// if (win->img_floor)
 	// 	mlx_destroy_image(win->mlx, win->img_floor);
@@ -34,8 +34,9 @@ void	exit_program(t_window *win, char *s, int error)
 		free(win->mlx);
 	}
 	if (error)
-		ft_printf("Error\n");
+		ft_printf("Error");
 	if (s && ft_strlen(s) > 0)
-		ft_printf("%s\n", s);
+		ft_printf(": %s", s);
+	ft_printf("\n");
 	exit(0);
 }

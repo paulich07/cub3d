@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 08:36:59 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/11/01 20:16:35 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/01 22:06:26 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,13 @@ int	main(int argc, char **argv)
 	// set_hl(&win); integrato in count_map_size
 	// fill_map(&win, filename); // diventa check_and_allocate_map
 	check_and_allocate_map(&win, filename);
-	if (!win.map || !*win.map)
-		exit_program(&win, "Map not allocated properly", 1);
+	printf("CHECK ALLOCATE OK");
+
+	// FILL MAP
+	// TO DO
+
+	// if (!win.map || !*win.map)
+	// 	exit_program(&win, "Map not allocated properly", 1); // if fill fails
 
 	// PARSE MAP
 	// if (sign(&config) == -1)

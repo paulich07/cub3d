@@ -6,13 +6,13 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 10:47:06 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/11/01 21:14:54 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/01 21:16:54 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-// TO DO
+// TO DO check int
 int is_valid_rgb(char *str)
 {
 	(void)str;
