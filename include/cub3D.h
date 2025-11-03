@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 15:28:01 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/01 21:35:47 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/03 18:53:49 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,16 +61,19 @@ void	check_and_allocate_map(t_window *win, char *filename);
 // Textures
 int		check_texture(char *name, char *path);
 
+// Map
+int		is_valid_map_size(t_window *win);
+int		is_map_line(char *line);
+void	count_map_size(t_window *win, char *filename);
+void	check_and_allocate_map(t_window *win, char *filename);
+
 // Map utils
 void	deallocate_map(char **map, int height);
 int		allocate_map_from_file(t_window *win, int fd);
+void	print_map(t_window *win);
 
 // Program utils
 void	exit_program(t_window *win, char *s, int error);
-
-// Fill Map
-int		count_line(char *file, t_window *config);
-void	fill_map(char *file, t_window *config);
 
 // Map validation
 int		check_player(int p);
@@ -78,7 +81,6 @@ int		find_player(t_window *config);
 
 int		check_wall(t_window *config);
 int		sign(t_window *config);
-// char	*remove_newline(char *line);
 
 // Cleaning
 int		cleaning(t_window *win, char *line, int fd);

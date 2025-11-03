@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 17:21:32 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/01 20:49:50 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/03 18:52:36 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void	deallocate_map(char **map, int height)
 	free(map);
 }
 
+// allocate rows
+// TO DO TEST
 int	allocate_map_from_file(t_window *win, int fd)
 {
 	char	*line;
@@ -36,10 +38,11 @@ int	allocate_map_from_file(t_window *win, int fd)
 	line = get_next_line(fd);
 	if (!line)
 		return (0);
-	win->map_width = ft_strlen(line);
-	if (line[(ft_strlen(line)) - 1] == '\n')
-		line[(ft_strlen(line)) - 1] = '\0';
-	win->map_width = ft_strlen(line);
+	while (!is_map_line(line))
+	{
+		free(line);
+		line = get_next_line(fd);
+	}
 	while (line != NULL)
 	{
 		if (line[(ft_strlen(line)) - 1] == '\n')
@@ -49,4 +52,17 @@ int	allocate_map_from_file(t_window *win, int fd)
 	}
 	win->map[i] = NULL;
 	return (1);
+}
+
+void	print_map(t_window *win)
+{
+	int	i;
+
+	i = 0;
+	while (i < win->map_height)
+	{
+		printf("%s\n", win->map[i]);
+		i++;
+	}
+	return ;
 }
