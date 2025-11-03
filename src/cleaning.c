@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 15:15:37 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/11/01 21:09:20 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/03 19:01:00 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,19 @@ int	cleaning(t_window *win, char *line, int fd)
 	return (-1);
 }
 
-void	ft_free_mxt(char **mxt)
+void	ft_free_mtx(char **mtx)
 {
 	int	i;
 
 	i = 0;
-	if (!mxt)
+	if (!mtx)
 		return ;
-	while (mxt[i])
+	while (mtx[i])
 	{
-		free(mxt[i]);
+		free(mtx[i]);
 		i++;
 	}
-	free(mxt);
+	free(mtx);
 }
 
 void	free_win(t_window *win)
@@ -60,7 +60,7 @@ void	free_win(t_window *win)
 	}
 	if (win->map)
 	{
-		ft_free_mxt(win->map);
+		ft_free_mtx(win->map);
 		win->map = NULL;
 	}
 }

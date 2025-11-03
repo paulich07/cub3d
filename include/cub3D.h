@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 15:28:01 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/03 18:53:49 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/03 19:00:33 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ void	count_map_size(t_window *win, char *filename);
 void	check_and_allocate_map(t_window *win, char *filename);
 
 // Map utils
-void	deallocate_map(char **map, int height);
 int		allocate_map_from_file(t_window *win, int fd);
 void	print_map(t_window *win);
 
@@ -85,6 +84,6 @@ int		sign(t_window *config);
 // Cleaning
 int		cleaning(t_window *win, char *line, int fd);
 void	free_win(t_window *win);
-void	ft_free_mxt(char **str);
+void	ft_free_mtx(char **str);
 
 #endif
