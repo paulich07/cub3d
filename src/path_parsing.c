@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 10:47:06 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/11/01 21:16:54 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/03 19:01:40 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	parse_rgb(char *line)
 		return (write(2, "Error RGB/n", 9), -1);
 	if (!is_valid_rgb(split[0]) || !is_valid_rgb(split[1]) || !is_valid_rgb(split[2]))
 	{
-		ft_free_mxt(split);
+		ft_free_mtx(split);
 		return (write(2, "RGB must be numbers\n", 20), -1);
 	}
 	r = ft_atoi(split[0]);
@@ -46,10 +46,10 @@ int	parse_rgb(char *line)
 	b = ft_atoi(split[2]);
 	if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255)
 	{
-		ft_free_mxt(split);
+		ft_free_mtx(split);
 		return (write(2, "Error Rgb\n", 10), -1);
 	}
-	ft_free_mxt(split);
+	ft_free_mtx(split);
 	return ((r << 16) | (g << 8) | b);
 }
 

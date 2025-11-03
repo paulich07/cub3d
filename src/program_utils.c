@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 17:20:24 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/01 21:49:03 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/03 19:03:55 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 void	exit_program(t_window *win, char *s, int error)
 {
-	ft_printf("EXIT PROGRAM\n");
-	deallocate_map(win->map, win->map_height);
+	free_win(win);
 	// if (win->img_floor)
 	// 	mlx_destroy_image(win->mlx, win->img_floor);
 	// if (win->img_wall)
