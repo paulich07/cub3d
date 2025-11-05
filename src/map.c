@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 08:52:41 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/11/03 18:53:08 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/05 20:10:07 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,31 @@ int	is_valid_map_size(t_window *win)
 	return (1);
 }
 
-// is map 1
-// is not map 0
-int	is_map_line(char *line)
+
+// allocate rows
+// TO DO TEST
+int	allocate_map_from_file(t_window *win, int fd)
 {
-	if (ft_strncmp(line, "NO ", 3) == 0
-		|| ft_strncmp(line, "SO ", 3) == 0
-		|| ft_strncmp(line, "EA ", 3) == 0
-		|| ft_strncmp(line, "WE ", 3) == 0
-		|| ft_strncmp(line, "F ", 2) == 0
-		|| ft_strncmp(line, "C ", 2) == 0
-		|| line[0] == '\n'
-		|| ft_strlen(line) <= 0)
+	char	*line;
+	int		i;
+
+	i = 0;
+	line = get_next_line(fd);
+	if (!line)
 		return (0);
+	while (!is_map_line(line))
+	{
+		free(line);
+		line = get_next_line(fd);
+	}
+	while (line != NULL)
+	{
+		if (line[(ft_strlen(line)) - 1] == '\n')
+			line[(ft_strlen(line)) - 1] = '\0';
+		win->map[i++] = line;
+		line = get_next_line(fd);
+	}
+	win->map[i] = NULL;
 	return (1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 15:28:01 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/03 19:00:33 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/05 20:15:11 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,17 @@
 # include <fcntl.h>
 # include <stdio.h>
 
+# define WINDOW_WIDTH	800
+# define WINDOW_HEIGHT	600
+
 typedef struct s_data
 {
 	void		*mlx;
 	void		*win;
 	int			map_height;
 	int			map_width;
-	float		pos_x;
-	float		pos_y;
+	double		pos_x;
+	double		pos_y;
 	char		**map;
 	int			rgb_floor;
 	int			rgb_ceiling;
@@ -53,33 +56,32 @@ int		parse_rgb(char *line);
 char	*extract_path(char *line);
 int		parse_paths(t_window *win, char *filename);
 
-// Map parsing
-int		is_valid_map_size(t_window *win);
-void	count_map_size(t_window *win, char *filename);
-void	check_and_allocate_map(t_window *win, char *filename);
-
 // Textures
 int		check_texture(char *name, char *path);
 
-// Map
+// Map (allocation)
 int		is_valid_map_size(t_window *win);
-int		is_map_line(char *line);
+int		allocate_map_from_file(t_window *win, int fd);
 void	count_map_size(t_window *win, char *filename);
 void	check_and_allocate_map(t_window *win, char *filename);
 
-// Map utils
-int		allocate_map_from_file(t_window *win, int fd);
+// Map utils (allocation)
 void	print_map(t_window *win);
+int		is_map_line(char *line);
+
+// Map parsing/validation
+void	parse_map(t_window *win, char *map);
+// int		check_player(int p);
+// int		find_player(t_window *config);
+// int		check_wall(t_window *config);
+// int		sign(t_window *config);
+
+// Window
+int		init_window(t_window *win);
+int		close_window(t_window *win);
 
 // Program utils
 void	exit_program(t_window *win, char *s, int error);
-
-// Map validation
-int		check_player(int p);
-int		find_player(t_window *config);
-
-int		check_wall(t_window *config);
-int		sign(t_window *config);
 
 // Cleaning
 int		cleaning(t_window *win, char *line, int fd);

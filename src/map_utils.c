@@ -6,36 +6,25 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 17:21:32 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/03 18:58:10 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/05 20:08:59 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-// allocate rows
-// TO DO TEST
-int	allocate_map_from_file(t_window *win, int fd)
+// is map 1
+// is not map 0
+int	is_map_line(char *line)
 {
-	char	*line;
-	int		i;
-
-	i = 0;
-	line = get_next_line(fd);
-	if (!line)
+	if (ft_strncmp(line, "NO ", 3) == 0
+		|| ft_strncmp(line, "SO ", 3) == 0
+		|| ft_strncmp(line, "EA ", 3) == 0
+		|| ft_strncmp(line, "WE ", 3) == 0
+		|| ft_strncmp(line, "F ", 2) == 0
+		|| ft_strncmp(line, "C ", 2) == 0
+		|| line[0] == '\n'
+		|| ft_strlen(line) <= 0)
 		return (0);
-	while (!is_map_line(line))
-	{
-		free(line);
-		line = get_next_line(fd);
-	}
-	while (line != NULL)
-	{
-		if (line[(ft_strlen(line)) - 1] == '\n')
-			line[(ft_strlen(line)) - 1] = '\0';
-		win->map[i++] = line;
-		line = get_next_line(fd);
-	}
-	win->map[i] = NULL;
 	return (1);
 }
 
