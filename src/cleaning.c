@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 15:15:37 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/11/03 19:02:13 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/05 20:24:53 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 int	cleaning(t_window *win, char *line, int fd)
 {
 	free(line);
-	if (fd > 0)
-		close(fd);
+	close(fd);
 	free_win(win);
 	write(2, "Malloc Failure\n", 15);
 	return (-1);

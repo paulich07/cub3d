@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 08:52:41 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/11/05 20:10:07 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/05 20:25:59 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int	is_valid_map_size(t_window *win)
 		return (0);
 	return (1);
 }
-
 
 // allocate rows
 // TO DO TEST

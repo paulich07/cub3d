@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 15:28:01 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/05 20:15:11 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/05 21:12:58 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ typedef struct s_data
 	int			map_width;
 	double		pos_x;
 	double		pos_y;
+	int			dir_x;
+	int			dir_y;
 	char		**map;
 	int			rgb_floor;
 	int			rgb_ceiling;
@@ -70,11 +72,17 @@ void	print_map(t_window *win);
 int		is_map_line(char *line);
 
 // Map parsing/validation
-void	parse_map(t_window *win, char *map);
-// int		check_player(int p);
-// int		find_player(t_window *config);
+void	parse_map(t_window *win);
 // int		check_wall(t_window *config);
 // int		sign(t_window *config);
+
+// Player parsing
+int		check_num_players(int p);
+int		find_player(t_window *config);
+
+// Player utils
+int		set_player_position(t_window *win, double y, double x);
+int		set_player_direction(t_window *win, char c);
 
 // Window
 int		init_window(t_window *win);

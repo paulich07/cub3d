@@ -6,12 +6,16 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 17:20:24 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/03 19:03:55 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/05 20:59:13 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
+// svuota win
+// dealloca mappa
+// dealloca eventuali immagini
+// distrugge e libera window
 void	exit_program(t_window *win, char *s, int error)
 {
 	free_win(win);
@@ -25,8 +29,8 @@ void	exit_program(t_window *win, char *s, int error)
 	// 	mlx_destroy_image(win->mlx, win->img_collect);
 	// if (win->img_exit)
 	// 	mlx_destroy_image(win->mlx, win->img_exit);
-	// if (win->win)
-	// 	mlx_destroy_window(win->mlx, win->win);
+	if (win->win)
+		mlx_destroy_window(win->mlx, win->win);
 	if (win->mlx)
 	{
 		mlx_destroy_display(win->mlx);

@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 08:36:59 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/11/05 20:13:49 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/05 20:58:15 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,10 @@ int	main(int argc, char **argv)
 	// PATHS
 	if (parse_paths(&win, filename) < 0)
 		exit_program(&win, "Invalid texture path or rgb", 1);
-	// CREATE MAP
 	check_and_allocate_map(&win, filename);
 	if (!win.map || !*win.map)
 		exit_program(&win, "Map not allocated properly", 1); // if fill fails
-	// PARSE MAP
-	parse_map(&win, filename);
+	parse_map(&win);
 	init_window(&win);
 
 	// put_images(&win);

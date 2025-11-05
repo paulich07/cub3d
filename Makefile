@@ -41,9 +41,10 @@ SRCS =	$(SRC_DIR)/main.c \
 		$(SRC_DIR)/map_parsing.c \
 		$(SRC_DIR)/cleaning.c \
 		$(SRC_DIR)/window.c \
-		$(SRC_DIR)/hooks.c
+		$(SRC_DIR)/hooks.c \
+		$(SRC_DIR)/player_parsing.c \
+		$(SRC_DIR)/player_utils.c
 # 		$(SRC_DIR)/textures.c \
-# 		$(SRC_DIR)/player_utils.c \
 # 		$(SRC_DIR)/program_utils.c \
 
 LIBFT = $(LIBFT_DIR)/libft.a
