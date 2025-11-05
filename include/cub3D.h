@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 15:28:01 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/05 21:12:58 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/05 21:14:05 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ void	parse_map(t_window *win);
 // int		sign(t_window *config);
 
 // Player parsing
-int		check_num_players(int p);
 int		find_player(t_window *config);
 
 // Player utils
