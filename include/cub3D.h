@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 15:28:01 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/05 21:14:05 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/05 21:54:32 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,23 @@
 # define WINDOW_WIDTH	800
 # define WINDOW_HEIGHT	600
 
+
+typedef struct s_img
+{
+	char	*addr;
+	void	*img;
+	int		bpp;
+	int		line_len;
+	int		endian;
+	int		width;
+	int		height;
+}	t_img;
+
 typedef struct s_data
 {
 	void		*mlx;
 	void		*win;
+	t_img		*win_img;
 	int			map_height;
 	int			map_width;
 	double		pos_x;
@@ -80,15 +93,26 @@ void	parse_map(t_window *win);
 int		find_player(t_window *config);
 
 // Player utils
+int		move_player(t_window *win, double x, double y);
 int		set_player_position(t_window *win, double y, double x);
 int		set_player_direction(t_window *win, char c);
 
 // Window
+int		init_win_img(t_window *win);
 int		init_window(t_window *win);
 int		close_window(t_window *win);
 
 // Program utils
 void	exit_program(t_window *win, char *s, int error);
+
+// Ray casting
+int		raycasting(t_window *win);
+
+// Engine
+int		engine(t_window *win);
+
+// Hooks
+int		key_press(int keycode, t_window *win);
 
 // Cleaning
 int		cleaning(t_window *win, char *line, int fd);

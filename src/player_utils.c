@@ -6,11 +6,22 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 09:01:17 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/11/05 21:12:19 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/05 21:35:41 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
+// TO DO ADD ROT SPEED
+
+int	move_player(t_window *win, double x, double y)
+{
+	if (!win)
+		exit_program(win, "Window error", 1);
+	win->pos_x += x;
+	win->pos_y += y;
+	return (0);
+}
 
 int	set_player_position(t_window *win, double y, double x)
 {

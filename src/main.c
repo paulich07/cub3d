@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 08:36:59 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/11/05 20:58:15 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/05 21:40:47 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,9 @@ int	main(int argc, char **argv)
 		exit_program(&win, "Map not allocated properly", 1); // if fill fails
 	parse_map(&win);
 	init_window(&win);
-
-	// put_images(&win);
-	// render_map(&win);
-	// mlx_key_hook(win.win, key_press, &win);
+	mlx_key_hook(win.win, key_press, &win);
 	mlx_hook(win.win, 17, 0, close_window, &win);
 	mlx_loop(win.mlx);
-
+	mlx_loop_hook(win.mlx, engine, &win);
 	return (0);
 }
