@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 15:28:01 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/05 21:54:32 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/17 21:13:47 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,12 @@ typedef struct s_img
 	int		height;
 }	t_img;
 
+typedef struct s_vector
+{
+	double	x;
+	double	y;
+}	t_vector;
+
 typedef struct s_data
 {
 	void		*mlx;
@@ -46,8 +52,10 @@ typedef struct s_data
 	t_img		*win_img;
 	int			map_height;
 	int			map_width;
-	double		pos_x;
-	double		pos_y;
+	double		map_x;
+	double		map_y;
+	double		player_x;
+	double		player_y;
 	int			dir_x;
 	int			dir_y;
 	char		**map;

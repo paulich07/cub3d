@@ -6,11 +6,24 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 17:20:24 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/17 18:20:40 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/17 18:38:14 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
+
+void	free_paths(t_window *win)
+{
+	if (win->path_no)
+		free(win->path_no);
+	if (win->path_so)
+		free(win->path_so);
+	if (win->path_we)
+		free(win->path_we);
+	if (win->path_ea)
+		free(win->path_ea);
+}
 
 // svuota win
 // dealloca mappa
@@ -30,6 +43,7 @@ void	exit_program(t_window *win, char *s, int error)
 	// 	mlx_destroy_image(win->mlx, win->img_exit);
 	if (win->map)
 		ft_free_mtx(win->map);
+	free_paths(win);
 	if (win->win_img)
 	{
 		// mlx_destroy_image frees also addr
