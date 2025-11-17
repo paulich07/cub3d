@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 21:16:13 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/17 18:04:16 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/17 18:05:40 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,25 +19,19 @@ int	draw_background(t_window *win)
 	int	half_pixels;
 	int	*pixel;
 	int	i;
-	int	color_ceiling;
-	int	color_floor;
 
 	tot_pixels = WINDOW_WIDTH * WINDOW_HEIGHT;
 	half_pixels = tot_pixels / 2;
 	pixel = (int *)win->win_img->addr;
-	color_ceiling = mlx_get_color_value(win->mlx, 0x000000);
-	color_floor = mlx_get_color_value(win->mlx, 0x45a393);
 	i = 0;
 	while (i < half_pixels)
 	{
-		// pixel[i] = win->rgb_floor;
-		pixel[i] = color_ceiling;
+		pixel[i] = win->rgb_floor;
 		i++;
 	}
 	while (i < tot_pixels)
 	{
-		// pixel[i] = win->rgb_ceiling;
-		pixel[i] = color_floor;
+		pixel[i] = win->rgb_ceiling;
 		i++;
 	}
 	return (0);
