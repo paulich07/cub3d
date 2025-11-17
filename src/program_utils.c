@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 17:20:24 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/05 21:39:20 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/17 18:01:09 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 // distrugge e libera window
 void	exit_program(t_window *win, char *s, int error)
 {
-	free_win(win);
+
 	// if (win->img_floor)
 	// 	mlx_destroy_image(win->mlx, win->img_floor);
 	// if (win->img_wall)
@@ -29,8 +29,15 @@ void	exit_program(t_window *win, char *s, int error)
 	// 	mlx_destroy_image(win->mlx, win->img_collect);
 	// if (win->img_exit)
 	// 	mlx_destroy_image(win->mlx, win->img_exit);
+	if (win->win_img)
+	{
+		// mlx_destroy_image frees also addr
+		mlx_destroy_image(win->mlx, win->win_img->img);
+		free(win->win_img);
+	}
 	if (win->win)
 		mlx_destroy_window(win->mlx, win->win);
+	free(win);
 	if (win->mlx)
 	{
 		mlx_destroy_display(win->mlx);
