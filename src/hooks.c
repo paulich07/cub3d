@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 20:13:57 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/05 21:44:12 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/18 19:21:19 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,10 @@ int	key_press(int keycode, t_window *win)
 		move_player(win, 0, -1);
 	else if (keycode == XK_s)
 		move_player(win, 0, 1);
-
-	// if (keycode == XK_Left)
-	// 	move_player(win, -1, 0);
-	// else if (keycode == XK_Right)
-	// 	move_player(win, 1, 0);
+	else if (keycode == XK_Right)
+		rotate_player(win, -ROT_SPEED);
+	else if (keycode == XK_Left)
+		rotate_player(win, ROT_SPEED);
 	// else if (keycode == XK_Up)
 	// 	move_player(win, 0, -1);
 	// else if (keycode == XK_Down)

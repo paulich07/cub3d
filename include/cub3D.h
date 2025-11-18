@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 15:28:01 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/17 21:13:47 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/18 19:43:12 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,12 @@
 # include <X11/X.h>
 # include <fcntl.h>
 # include <stdio.h>
+# include <math.h>
 
 # define WINDOW_WIDTH	800
 # define WINDOW_HEIGHT	600
-
+# define ROT_SPEED		0.1
+# define MOV_SPEED		0.1
 
 typedef struct s_img
 {
@@ -39,11 +41,25 @@ typedef struct s_img
 	int		height;
 }	t_img;
 
-typedef struct s_vector
+// typedef struct s_vector
+// {
+// 	double	x;
+// 	double	y;
+// }	t_vector;
+
+typedef struct s_ray
 {
-	double	x;
-	double	y;
-}	t_vector;
+	double	map_x;
+	double	map_y;
+	double	dir_x;
+	double	dir_y;
+	double	delta_dist_x;
+	double	delta_dist_y;
+	double	side_step_x;
+	double	side_step_y;
+	double	step_x;
+	double	step_y;
+}	t_ray;
 
 typedef struct s_data
 {
@@ -56,6 +72,9 @@ typedef struct s_data
 	double		map_y;
 	double		player_x;
 	double		player_y;
+	double		plane_x;
+	double		plane_y;
+	double		camera_x;
 	int			dir_x;
 	int			dir_y;
 	char		**map;
@@ -104,6 +123,7 @@ int		find_player(t_window *config);
 int		move_player(t_window *win, double x, double y);
 int		set_player_position(t_window *win, double y, double x);
 int		set_player_direction(t_window *win, char c);
+void	rotate_player(t_window *win, double rot_speed);
 
 // Window
 int		init_win_img(t_window *win);
@@ -114,7 +134,8 @@ int		close_window(t_window *win);
 void	exit_program(t_window *win, char *s, int error);
 
 // Ray casting
-int		raycasting(t_window *win);
+void	init_ray(t_window *win, t_ray *ray, int x);
+int		raycasting(t_window *win, int x);
 
 // Engine
 int		engine(t_window *win);
@@ -126,5 +147,8 @@ int		key_press(int keycode, t_window *win);
 int		cleaning(t_window *win, char *line, int fd);
 void	free_win(t_window *win);
 void	ft_free_mtx(char **str);
+
+// Utils
+double	ft_fabs(double x);
 
 #endif
