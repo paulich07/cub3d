@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 15:28:01 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/18 19:43:12 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/19 17:40:50 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,9 @@ void	exit_program(t_window *win, char *s, int error);
 // Ray casting
 void	init_ray(t_window *win, t_ray *ray, int x);
 int		raycasting(t_window *win, int x);
+
+// Ray
+void	init_ray_step(t_window *win, t_ray *ray);
 
 // Engine
 int		engine(t_window *win);

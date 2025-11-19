@@ -46,6 +46,7 @@ SRCS =	$(SRC_DIR)/main.c \
 		$(SRC_DIR)/player_utils.c \
 		$(SRC_DIR)/engine.c \
 		$(SRC_DIR)/raycasting.c \
+		$(SRC_DIR)/ray.c \
 		$(SRC_DIR)/utils.c
 # 		$(SRC_DIR)/textures.c \
 # 		$(SRC_DIR)/program_utils.c \
