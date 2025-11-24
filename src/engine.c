@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 21:16:13 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/18 19:31:26 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/24 04:30:00 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,23 +36,10 @@ int	draw_background(t_window *win)
 	return (0);
 }
 
-// calcola draw_end e draw_start
-// sovrascrive colori muro per colonna x della win_img
-int	draw_column(t_window *win, int x, int dist)
-{
-	int draw_start;
-	int draw_end;
-
-	// draw walls (raycasting)
-	// printf("draw walls\n");
-	return (0);
-}
-
 // render single frame
 int	engine(t_window *win)
 {
 	int	x;
-	double	dist;
 	// to do handle input
 	// to do update position
 	// to do disegna frame
@@ -62,9 +49,7 @@ int	engine(t_window *win)
 	draw_background(win);
 	while (x < WINDOW_WIDTH)
 	{
-
-		dist = raycasting(win, x); // ottiene distanza perpendicolare
-		// draw_column(win, x, dist);
+		raycasting(win, x);
 		x++;
 	}
 	mlx_put_image_to_window(win->mlx, win->win, win->win_img->img, 0, 0);

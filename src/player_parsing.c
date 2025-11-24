@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 09:01:17 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/11/05 21:15:37 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/24 04:28:03 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 // if player found set pos and dir, returns 1
 // if player not found return -1
-int	find_player(t_window *win)
+int	init_player(t_window *win)
 {
 	int	x;
 	int	y;

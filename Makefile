@@ -23,6 +23,8 @@ LIBFT_HEADERS_DIR = $(LIBFT_DIR)/include
 
 # Links
 MINILIBX_URL = https://cdn.intra.42.fr/document/document/36820/minilibx-linux.tgz
+# MINILIBX_URL = https://github.com/42Paris/minilibx-linux.git libs/minilibx-linux
+
 
 # Compiler
 CC = cc
@@ -47,6 +49,7 @@ SRCS =	$(SRC_DIR)/main.c \
 		$(SRC_DIR)/engine.c \
 		$(SRC_DIR)/raycasting.c \
 		$(SRC_DIR)/ray.c \
+		$(SRC_DIR)/draw.c \
 		$(SRC_DIR)/utils.c
 # 		$(SRC_DIR)/textures.c \
 # 		$(SRC_DIR)/program_utils.c \

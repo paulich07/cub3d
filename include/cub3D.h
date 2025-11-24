@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 15:28:01 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/19 17:40:50 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/24 04:28:03 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@
 # define WINDOW_HEIGHT	600
 # define ROT_SPEED		0.1
 # define MOV_SPEED		0.1
+# define MAX_STEPS		100
+# define FOV_OFFSET		0.66
 
 typedef struct s_img
 {
@@ -49,17 +51,23 @@ typedef struct s_img
 
 typedef struct s_ray
 {
-	double	map_x;
-	double	map_y;
+	int			map_x;
+	int			map_y;
 	double	dir_x;
 	double	dir_y;
 	double	delta_dist_x;
 	double	delta_dist_y;
 	double	side_step_x;
 	double	side_step_y;
-	double	step_x;
-	double	step_y;
+	double	perp_wall_dist;
+	int			step_x;
+	int			step_y;
+	int			side;
 }	t_ray;
+
+// plane rappresenta metà dell'ampiezza della finestra
+// FOV = 2 × atan(plane / 1)
+
 
 typedef struct s_data
 {
@@ -68,13 +76,13 @@ typedef struct s_data
 	t_img		*win_img;
 	int			map_height;
 	int			map_width;
-	double		map_x;
-	double		map_y;
-	double		player_x;
-	double		player_y;
-	double		plane_x;
-	double		plane_y;
-	double		camera_x;
+	double	map_x;
+	double	map_y;
+	double	player_pos_x;
+	double	player_pos_y;
+	double	plane_x;
+	double	plane_y;
+	double	camera_x;
 	int			dir_x;
 	int			dir_y;
 	char		**map;
@@ -117,7 +125,7 @@ void	parse_map(t_window *win);
 // int		sign(t_window *config);
 
 // Player parsing
-int		find_player(t_window *config);
+int		init_player(t_window *config);
 
 // Player utils
 int		move_player(t_window *win, double x, double y);
@@ -134,11 +142,18 @@ int		close_window(t_window *win);
 void	exit_program(t_window *win, char *s, int error);
 
 // Ray casting
+void	dda(t_window *win, t_ray *ray);
 void	init_ray(t_window *win, t_ray *ray, int x);
-int		raycasting(t_window *win, int x);
+void	raycasting(t_window *win, int x);
 
 // Ray
 void	init_ray_step(t_window *win, t_ray *ray);
+
+// Draw
+void  fix_fisheye(t_window *win, t_ray *ray);
+void	put_pixel_to_img(t_img *img, int x, int y, int color);
+void	draw_column(t_window *win, int x, int start, int end, int color);
+void	proiezione(t_window *win, t_ray *ray, int x);
 
 // Engine
 int		engine(t_window *win);
