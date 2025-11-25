@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 15:28:01 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/25 01:30:00 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/25 02:02:19 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # define ROT_SPEED		0.1
 # define MOV_SPEED		0.1
 # define MAX_STEPS		100
-# define FOV_OFFSET		0.66
+# define FOV_OFFSET		0.33
 
 typedef struct s_img
 {
@@ -121,7 +121,7 @@ int		is_map_line(char *line);
 
 // Map parsing/validation
 void	parse_map(t_window *win);
-// int		check_wall(t_window *config);
+// int		check_wall(t_window *config); // se serve cambia nome
 // int		sign(t_window *config);
 
 // Player parsing
@@ -168,5 +168,6 @@ void	ft_free_mtx(char **str);
 
 // Utils
 double	ft_fabs(double x);
+int		is_wall(t_window *win, int x, int y);
 
 #endif

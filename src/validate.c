@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 15:03:42 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/11/01 20:58:30 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/25 01:58:10 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,31 +66,32 @@ int	sign(t_window *win)
 // 	win->l = max;
 // }
 
-int	check_wall(t_window *win)
-{
-	size_t	i;
-	size_t	j;
-	size_t	len;
-
-	i = 0;
-	len = ft_strlen(win->map[0]) - 2;
-	while (win->map[i])
-	{
-		j = 0;
-		while (win->map[i][j] && win->map[i][j] != '\n')
-		{
-			if (i == 0 && win->map[i][j] != '1' && win->map[i][j] != ' ')
-				return (write(2, "Error Walls\n", 12), -1);
-			if ((i == win->h - 1) && win->map[i][j] != '1'
-				&& win->map[i][j] != ' ')
-				return (write(2, "Error Walls\n", 12), -1);
-			if (j == 0 && win->map[i][j] != '1' && win->map[i][j] != ' ')
-				return (write(2, "Error Walls\n", 12), -1);
-			if (j == len && win->map[i][j] != '1' && win->map[i][j] != 32)
-				return (write(2, "Error Walls\n", 12), -1);
-			j++;
-		}
-		i++;
-	}
-	return (0);
-}
+// se serve cambia nome
+// int	check_wall(t_window *win)
+// {
+// 	size_t	i;
+// 	size_t	j;
+// 	size_t	len;
+// 
+// 	i = 0;
+// 	len = ft_strlen(win->map[0]) - 2;
+// 	while (win->map[i])
+// 	{
+// 		j = 0;
+// 		while (win->map[i][j] && win->map[i][j] != '\n')
+// 		{
+// 			if (i == 0 && win->map[i][j] != '1' && win->map[i][j] != ' ')
+// 				return (write(2, "Error Walls\n", 12), -1);
+// 			if ((i == win->h - 1) && win->map[i][j] != '1'
+// 				&& win->map[i][j] != ' ')
+// 				return (write(2, "Error Walls\n", 12), -1);
+// 			if (j == 0 && win->map[i][j] != '1' && win->map[i][j] != ' ')
+// 				return (write(2, "Error Walls\n", 12), -1);
+// 			if (j == len && win->map[i][j] != '1' && win->map[i][j] != 32)
+// 				return (write(2, "Error Walls\n", 12), -1);
+// 			j++;
+// 		}
+// 		i++;
+// 	}
+// 	return (0);
+// }
