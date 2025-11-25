@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 09:01:17 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/11/24 04:28:03 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/25 16:16:16 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int	init_player(t_window *win)
 			{
 				set_player_position(win, (double)y + 0.5, (double)x + 0.5);
 				set_player_direction(win, win->map[y][x]);
+				win->map[y][x] = '0';
 				p++;
 			}
 			x++;

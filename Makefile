@@ -35,24 +35,24 @@ LDFLAGS = -L$(LIBFT_DIR) -lft -L$(MINILIBX_DIR) -lmlx -lX11 -lXext -lm
 
 # Sources
 SRCS =	$(SRC_DIR)/main.c \
-		$(SRC_DIR)/filename_parsing.c \
-		$(SRC_DIR)/path_parsing.c \
-		$(SRC_DIR)/program_utils.c \
-		$(SRC_DIR)/map.c \
- 		$(SRC_DIR)/map_utils.c \
-		$(SRC_DIR)/map_parsing.c \
 		$(SRC_DIR)/cleaning.c \
-		$(SRC_DIR)/window.c \
+		$(SRC_DIR)/draw.c \
+		$(SRC_DIR)/engine.c \
+		$(SRC_DIR)/filename_parsing.c \
 		$(SRC_DIR)/hooks.c \
+		$(SRC_DIR)/map_parsing.c \
+ 		$(SRC_DIR)/map_utils.c \
+		$(SRC_DIR)/map.c \
+		$(SRC_DIR)/path_parsing.c \
 		$(SRC_DIR)/player_parsing.c \
 		$(SRC_DIR)/player_utils.c \
-		$(SRC_DIR)/engine.c \
-		$(SRC_DIR)/raycasting.c \
+		$(SRC_DIR)/program_utils.c \
 		$(SRC_DIR)/ray.c \
-		$(SRC_DIR)/draw.c \
-		$(SRC_DIR)/utils.c
+		$(SRC_DIR)/raycasting.c \
+		$(SRC_DIR)/window.c \
+		$(SRC_DIR)/utils.c \
+		$(SRC_DIR)/validate.c		
 # 		$(SRC_DIR)/textures.c \
-# 		$(SRC_DIR)/program_utils.c \
 
 LIBFT = $(LIBFT_DIR)/libft.a
 MINILIBX = $(MINILIBX_DIR)/libmlx.a
