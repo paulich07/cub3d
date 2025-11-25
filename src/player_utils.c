@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 09:01:17 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/11/25 18:30:01 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/25 18:32:53 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@ int	move_player(t_window *win, double x, double y)
 {
 	if (!win)
 		exit_program(win, "Window error", 1);
+	if (is_wall(win, (int)(win->player_pos_x + x),
+		(int)(win->player_pos_y + y)))
+		return (printf("You hit a wall\n"), 1);
 	win->player_pos_x += x;
 	win->player_pos_y += y;
 	return (0);

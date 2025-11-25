@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 19:42:11 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/25 18:17:57 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/25 18:30:46 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ double	ft_fabs(double x)
 	return (x);
 }
 
-int		is_wall(t_window *win, int x, int y)
+int	is_wall(t_window *win, int x, int y)
 {
 	if (x < 0 || x >= win->map_width || y < 0 || y >= win->map_height)
 		return (1);
