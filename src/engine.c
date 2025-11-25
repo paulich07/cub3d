@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 21:16:13 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/24 04:30:00 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/25 01:27:54 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	engine(t_window *win)
 	// to do handle input
 	// to do update position
 	// to do disegna frame
-	printf("engine working\n");
+	// printf("engine working\n");
 
 	x = 0;
 	draw_background(win);

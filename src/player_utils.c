@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 09:01:17 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/11/24 04:25:58 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/25 01:32:48 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int	set_player_position(t_window *win, double y, double x)
 		exit_program(win, "Window error", 1);
 	win->player_pos_y = y;
 	win->player_pos_x = x;
+	// printf("player pos: %f %f\n", win->player_pos_x, win->player_pos_y);
 	return (0);
 }
 
@@ -78,5 +79,9 @@ int	set_player_direction(t_window *win, char c)
 	}
 	else
 		exit_program(win, "Invalid direction", 1);
+	printf("player dir_y: %d\n", win->dir_y);
+	printf("player dir_x: %d\n", win->dir_x);
+	printf("player plane_y: %f\n", win->plane_y);
+	printf("player plane_x: %f\n", win->plane_x);
 	return (0);
 }

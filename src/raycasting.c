@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 21:41:29 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/24 04:21:28 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/25 01:54:43 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	dda(t_window *win, t_ray *ray)
 			hit = 1;
 		steps++;
 	}
+	fix_fisheye(win, ray);
 }
 
 // estraggo raggio in base a pos player

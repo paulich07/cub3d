@@ -4,11 +4,11 @@ SO ./path_to_south_txture
 WE ./path_to_west_texture
 EA ./path_to_east_texture
 
-F 225,20,0
-C 220,100,0
+F 203,197,111
+C 37,40,80
 
 1111111111
+1000100001
 1000000001
 1000N00001
-1000000001
 1111111111
