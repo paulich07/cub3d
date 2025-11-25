@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 04:10:05 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/25 16:27:39 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/25 16:40:19 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,25 +18,25 @@ void	fix_fisheye(t_window *win, t_ray *ray)
 		exit_program(win, "fix_fisheye Window error", 1);
 	if (ray->side == 0)
 	{
-		// if (ray->dir_x == 0)
-		// 	ray->perp_wall_dist = 0.01;
-		// else
-		// {
+		if (ray->dir_x == 0)
+			ray->perp_wall_dist = 0.01;
+		else
+		{
 			ray->perp_wall_dist = (ray->map_x - win->player_pos_x
 					+ (1 - ray->step_x) / 2) / ray->dir_x;
-		// }
+		}
 		if (ray->perp_wall_dist == 0)
 			ray->perp_wall_dist = 0.01;
 	}
 	else
 	{
-		// if (ray->dir_y == 0)
-		// 	ray->perp_wall_dist = 0.01;
-		// else
-		// {
+		if (ray->dir_y == 0)
+			ray->perp_wall_dist = 0.01;
+		else
+		{
 			ray->perp_wall_dist = (ray->map_y - win->player_pos_y
 					+ (1 - ray->step_y) / 2) / ray->dir_y;
-		// }
+		}
 		if (ray->perp_wall_dist == 0)
 			ray->perp_wall_dist = 0.01;
 	}
@@ -81,7 +81,6 @@ void	proiezione(t_window *win, t_ray *ray, int x)
 		draw_start = 0;
 	if (draw_end >= WINDOW_HEIGHT)
 		draw_end = WINDOW_HEIGHT - 1;
-	printf("Column %d: height=%d start=%d end=%d\n", x, column_height, draw_start, draw_end);
 
   // TO DO choose color based on side
 	color = 0x789CAC;

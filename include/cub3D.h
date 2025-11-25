@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 15:28:01 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/25 16:01:24 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/25 18:27:55 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@
 
 # define WINDOW_WIDTH	800
 # define WINDOW_HEIGHT	600
-# define ROT_SPEED		0.1
-# define MOV_SPEED		0.1
+# define ROT_ANGLE		0.1
 # define MAX_STEPS		100
 # define FOV_OFFSET		0.66
+
 
 typedef struct s_img
 {
@@ -83,8 +83,8 @@ typedef struct s_data
 	double		plane_x;
 	double		plane_y;
 	double		camera_x;
-	int			dir_x;
-	int			dir_y;
+	double			dir_x;
+	double			dir_y;
 	char		**map;
 	int			rgb_floor;
 	int			rgb_ceiling;
@@ -131,7 +131,7 @@ int		init_player(t_window *config);
 int		move_player(t_window *win, double x, double y);
 int		set_player_position(t_window *win, double y, double x);
 int		set_player_direction(t_window *win, char c);
-void	rotate_player(t_window *win, double rot_speed);
+void	rotate_player(t_window *win, double rot_angle);
 
 // Window
 int		init_win_img(t_window *win);
@@ -169,5 +169,6 @@ void	ft_free_mtx(char **str);
 // Utils
 double	ft_fabs(double x);
 int		is_wall(t_window *win, int x, int y);
+double	deg_to_rad(double deg);
 
 #endif
