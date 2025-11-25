@@ -97,7 +97,7 @@ clean:
 	@echo "$(RED)---- Removing .o files in $(NAME)----$(RESET)"
 	@rm -rf $(OBJ_DIR)
 	@echo "$(RED)---- cleaning minilibx ----$(RESET)"
-	@$(MAKE) clean -C $(MINILIBX_DIR)
+	@$(MAKE) clean -C $(MINILIBX_DIR) 2> /dev/null || true
 ifeq ($(LIBFT_CLEAN_ENABLED),1)
 	@echo "$(RED)---- cleaning libft =---$(RESET)"
 	@$(MAKE) clean -C $(LIBFT_DIR) --silent
