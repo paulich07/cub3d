@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 15:28:01 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/25 18:27:55 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/25 19:04:52 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # define WINDOW_WIDTH	800
 # define WINDOW_HEIGHT	600
 # define ROT_ANGLE		0.1
+# define MOV_SPEED		0.5
 # define MAX_STEPS		100
 # define FOV_OFFSET		0.66
 

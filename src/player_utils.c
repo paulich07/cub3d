@@ -6,14 +6,13 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 09:01:17 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/11/25 18:34:55 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/25 18:46:33 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-
-
+// to do add direction
 // move player asdw
 int	move_player(t_window *win, double x, double y)
 {
