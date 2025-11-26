@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
+/*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 15:28:01 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/25 19:04:52 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/26 15:20:39 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@
 # define MOV_SPEED		0.5
 # define MAX_STEPS		100
 # define FOV_OFFSET		0.66
-
 
 typedef struct s_img
 {
@@ -69,7 +68,6 @@ typedef struct s_ray
 // plane rappresenta metà dell'ampiezza della finestra
 // FOV = 2 × atan(plane / 1)
 
-
 typedef struct s_data
 {
 	void		*mlx;
@@ -84,8 +82,8 @@ typedef struct s_data
 	double		plane_x;
 	double		plane_y;
 	double		camera_x;
-	double			dir_x;
-	double			dir_y;
+	double		dir_x;
+	double		dir_y;
 	char		**map;
 	int			rgb_floor;
 	int			rgb_ceiling;
@@ -96,6 +94,20 @@ typedef struct s_data
 	char		*path_we;
 	char		*path_ea;
 }	t_window;
+
+//new ones
+int		validate_and_convert_rgb(char **split);
+void	check_boundary_escape(t_window *win, int y, int x, int **visited);
+void	flood_fill_neighbors(t_window *win, int y, int x, int **visited);
+
+int		check_map_enclosure_with_flood_fill(t_window *win);
+void	flood_fill(t_window *win, int y, int x, int **visited);
+int		verify_config_complete(t_window *win);
+int		handle_texture(t_window *win, char *line, char **path_ptr);
+int		handle_color(t_window *win, char *line, int *rgb, int *flag);
+int		validate_all_textures(t_window *win);
+int		val_tex_path(char *path);
+int		is_config_line(char *line);
 
 // Filename parsing
 int		is_valid_filename(char *filename);
@@ -123,7 +135,7 @@ int		is_map_line(char *line);
 // Map parsing/validation
 void	parse_map(t_window *win);
 // int		check_wall(t_window *config); // se serve cambia nome
-// int		sign(t_window *config);
+int		sign(t_window *config);
 
 // Player parsing
 int		init_player(t_window *config);
@@ -163,6 +175,8 @@ int		engine(t_window *win);
 int		key_press(int keycode, t_window *win);
 
 // Cleaning
+
+void	small_free(int size, int **arr);
 int		cleaning(t_window *win, char *line, int fd);
 void	free_win(t_window *win);
 void	ft_free_mtx(char **str);

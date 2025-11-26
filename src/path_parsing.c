@@ -3,58 +3,94 @@
 /*                                                        :::      ::::::::   */
 /*   path_parsing.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
+/*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 10:47:06 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/11/03 19:01:40 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/26 15:02:02 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-// TO DO check int
-int is_valid_rgb(char *str)
+//validate theres nothing else after the path
+static int	validate_line_end(char *line, int i)
 {
-	(void)str;
-
+	while (line[i])
+	{
+		if (line[i] != ' ' && line[i] != '\t' && line[i] != '\n')
+			return (0);
+		i++;
+	}
 	return (1);
 }
 
-// more or less 3 num X
-// values outside 0-255
-int	parse_rgb(char *line)
+//check correct input element
+int	is_config_line(char *line)
 {
-	int		r;
-	int		g;
-	int		b;
-	char	**split;
-	char	*str;
-
-	str = line + 1; // skip F or C line
-	while (*str == ' ')
-		str++;
-	split = ft_split(str, ',');
-	if (!split || !split[0] || !split[1] || !split[2])
-		return (write(2, "Error RGB/n", 9), -1);
-	if (!is_valid_rgb(split[0]) || !is_valid_rgb(split[1]) || !is_valid_rgb(split[2]))
-	{
-		ft_free_mtx(split);
-		return (write(2, "RGB must be numbers\n", 20), -1);
-	}
-	r = ft_atoi(split[0]);
-	g = ft_atoi(split[1]);
-	b = ft_atoi(split[2]);
-	if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255)
-	{
-		ft_free_mtx(split);
-		return (write(2, "Error Rgb\n", 10), -1);
-	}
-	ft_free_mtx(split);
-	return ((r << 16) | (g << 8) | b);
+	if (!line || line[0] == '\n')
+		return (0);
+	if (ft_strncmp(line, "NO ", 3) == 0)
+		return (1);
+	if (ft_strncmp(line, "SO ", 3) == 0)
+		return (1);
+	if (ft_strncmp(line, "WE ", 3) == 0)
+		return (1);
+	if (ft_strncmp(line, "EA ", 3) == 0)
+		return (1);
+	if (ft_strncmp(line, "F ", 2) == 0)
+		return (1);
+	if (ft_strncmp(line, "C ", 2) == 0)
+		return (1);
+	return (0);
 }
 
-// line = "NO ./path/to/texture.xpm\n"
-// TO DO check if the path is valid
+//routes each line to its appropriate handler
+static int	parse_config_line(t_window *win, char *line)
+{
+	if (ft_strncmp(line, "NO ", 3) == 0)
+		return (handle_texture(win, line, &win->path_no));
+	else if (ft_strncmp(line, "SO ", 3) == 0)
+		return (handle_texture(win, line, &win->path_so));
+	else if (ft_strncmp(line, "WE ", 3) == 0)
+		return (handle_texture(win, line, &win->path_we));
+	else if (ft_strncmp(line, "EA ", 3) == 0)
+		return (handle_texture(win, line, &win->path_ea));
+	else if (ft_strncmp(line, "F ", 2) == 0)
+		return (handle_color(win, line, &win->rgb_floor, &win->floor_set));
+	else if (ft_strncmp(line, "C ", 2) == 0)
+		return (handle_color(win, line, &win->rgb_ceiling, &win->ceiling_set));
+	return (0);
+}
+
+int	parse_paths(t_window *win, char *filename)
+{
+	int		fd;
+	char	*line;
+
+	fd = open(filename, O_RDONLY);
+	if (fd < 0)
+		exit_program(win, "Error\nFile opening failed", 1);
+	line = get_next_line(fd);
+	while (line)
+	{
+		if (is_config_line(line))
+		{
+			if (parse_config_line(win, line) < 0)
+				return (cleaning(win, line, fd));
+		}
+		else if (line[0] != '\n')
+			break ;
+		free(line);
+		line = get_next_line(fd);
+	}
+	free(line);
+	close(fd);
+	if (!verify_config_complete(win))
+		return (-1);
+	return (0);
+}
+
+//extract each path line
 char	*extract_path(char *line)
 {
 	int		i;
@@ -68,99 +104,17 @@ char	*extract_path(char *line)
 	path = malloc(sizeof(char) * (ft_strlen(line + i) + 1));
 	if (!path)
 		return (NULL);
-	while (line[i] && line[i] != '\n' && line[i] != ' ')
+	while (line[i] && line[i] != '\n' && line[i] != ' ' && line[i] != '\t')
 	{
 		path[j] = line[i];
 		i++;
 		j++;
 	}
 	path[j] = '\0';
-	return (path);
-}
-
-
-// TO DO differentiate errors (failed path extraction vs wrong parsing)
-// TO DO handle ALL errors (see below)
-int	parse_paths(t_window *win, char *filename)
-{
-	int		fd;
-	char	*line;
-	int		i;
-
-	i = 0;
-	fd = open(filename, O_RDONLY);
-	if (fd < 0)
-		exit_program(win, "Error in file opening", 1);
-	line = get_next_line(fd);
-	while (line)
+	if (!validate_line_end(line, i))
 	{
-		if (ft_strncmp(line, "NO ", 3) == 0)
-		{
-			if (win->path_no != NULL)
-				return (cleaning(win, line, fd));
-			win->path_no = extract_path(line);
-			if (win->path_no == NULL)
-				return (cleaning(win, line, fd));
-		}
-		else if (ft_strncmp(line, "SO ", 3) == 0)
-		{
-			if (win->path_so != NULL)
-				return (cleaning(win, line, fd));
-			win->path_so = extract_path(line);
-			if (win->path_so == NULL)
-				return (cleaning(win, line, fd));
-		}
-		else if (ft_strncmp(line, "WE ", 3) == 0)
-		{
-			if (win->path_we != NULL)
-				return (cleaning(win, line, fd));
-			win->path_we = extract_path(line);
-			if (win->path_we == NULL)
-				return (cleaning(win, line, fd));
-		}
-		else if (ft_strncmp(line, "EA ", 3) == 0)
-		{
-			if (win->path_ea != NULL)
-				return (cleaning(win, line, fd));
-			win->path_ea = extract_path(line);
-			if (win->path_ea == NULL)
-				return (cleaning(win, line, fd));
-		}
-		else if (ft_strncmp(line, "F ", 2) == 0)
-		{
-			if (parse_rgb(line) < 0)
-				return (cleaning(win, line, fd));
-			win->rgb_floor = parse_rgb(line);
-			win->floor_set = 1;
-		}
-		else if (ft_strncmp(line, "C ", 2) == 0)
-		{
-			if (parse_rgb(line) < 0)
-				return (cleaning(win, line, fd));
-			win->rgb_ceiling = parse_rgb(line);
-			win->ceiling_set = 1;
-		}
-		else if (line[0] && line[0] != '\n') // TO DO CORREGGERE
-		{
-			// win->map[i] = remove_newline(ft_strdup(line)); // ??
-			// if (!win->map[i])
-			// 	return (cleaning(win, line, fd));
-			i++;
-		}
-		// else
-		// {
-			// TO DO errore generico?
-			// se c'e' spazio prima del nome? se e' formattato male? se c'e' roba dopo il path?
-			// es     EAS ./path
-		// 	return (cleaning(win, line, fd));
-		// }
-		free(line);
-		line = get_next_line(fd);
+		free(path);
+		return (NULL);
 	}
-	free(line);
-	if (win->floor_set == 0 || win->ceiling_set == 0
-		|| !win->path_no || !win->path_so || !win->path_we || !win->path_ea)
-		return (4);
-	close (fd);
-	return (0);
+	return (path);
 }

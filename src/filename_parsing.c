@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   filename_parsing.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
+/*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 17:21:19 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/11/01 21:18:56 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/26 15:07:18 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-/// check if filename ends with ".ber"
 int	is_valid_filename(char *filename)
 {
 	if (!filename)
@@ -24,7 +23,6 @@ int	is_valid_filename(char *filename)
 	return (1);
 }
 
-/// check if the filename is a directory
 int	is_directory(char *filename)
 {
 	int	fd;

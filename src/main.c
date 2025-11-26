@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
+/*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 08:36:59 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/11/17 17:04:45 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/26 15:13:33 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int	main(int argc, char **argv)
 		return (1);
 	if (parse_paths(&win, filename) < 0)
 		exit_program(&win, "Invalid texture path or rgb", 1);
+	if (validate_all_textures(&win) == 0)
+		exit_program(&win, "Invalid texture file", 1);
 	check_and_allocate_map(&win, filename);
 	if (!win.map || !*win.map)
 		exit_program(&win, "Map not allocated properly", 1);

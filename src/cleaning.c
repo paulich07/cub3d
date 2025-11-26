@@ -3,21 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   cleaning.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
+/*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 15:15:37 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/11/05 20:24:53 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/26 15:06:17 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <cub3D.h>
+#include "cub3D.h"
+
+void	small_free(int size, int **arr)
+{
+	int	i;
+
+	i = 0;
+	while (i < size)
+	{
+		free(arr[i]);
+		i++;
+	}
+	free(arr);
+}
 
 int	cleaning(t_window *win, char *line, int fd)
 {
 	free(line);
 	close(fd);
 	free_win(win);
-	write(2, "Malloc Failure\n", 15);
+	write(2, "Error\nParsing failed\n", 21);
 	return (-1);
 }
 
@@ -64,5 +77,3 @@ void	free_win(t_window *win)
 		win->map = NULL;
 	}
 }
-
-

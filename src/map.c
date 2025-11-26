@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
+/*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 08:52:41 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/11/17 21:21:55 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/26 15:15:20 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-// min 3x3
 int	is_valid_map_size(t_window *win)
 {
 	if (win->map_width < 3 || win->map_height < 3)
@@ -20,8 +19,6 @@ int	is_valid_map_size(t_window *win)
 	return (1);
 }
 
-// allocate rows
-// TO DO TEST
 int	allocate_map_from_file(t_window *win, int fd)
 {
 	char	*line;
@@ -38,6 +35,10 @@ int	allocate_map_from_file(t_window *win, int fd)
 	}
 	while (line != NULL)
 	{
+		if (is_config_line(line))
+			return (0);
+		if (line[0] == '\n')
+			return (0);
 		if (line[(ft_strlen(line)) - 1] == '\n')
 			line[(ft_strlen(line)) - 1] = '\0';
 		win->map[i++] = line;
@@ -47,10 +48,6 @@ int	allocate_map_from_file(t_window *win, int fd)
 	return (1);
 }
 
-// counts max line width and height
-// skippa paths e righe vuote
-// conta righe mappa e setta altezza
-// - 1 to remove \n
 void	count_map_size(t_window *win, char *filename)
 {
 	int		fd;
@@ -77,7 +74,6 @@ void	count_map_size(t_window *win, char *filename)
 	return ;
 }
 
-// allocate pointer columns
 void	check_and_allocate_map(t_window *win, char *filename)
 {
 	int	fd;
@@ -90,7 +86,6 @@ void	check_and_allocate_map(t_window *win, char *filename)
 	win->map = ft_calloc(win->map_height + 1, sizeof(char *));
 	if (!win->map)
 		exit_program(win, "Map not allocated properly", 1);
-
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
 		exit_program(win, "Error in file opening", 1);
