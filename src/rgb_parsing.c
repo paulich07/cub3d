@@ -6,7 +6,7 @@
 /*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 13:19:39 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/11/26 15:19:00 by sel-khao         ###   ########.fr       */
+/*   Updated: 2025/11/26 18:05:23 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ int	parse_rgb(char *line)
 	str = line + 1;
 	while (*str == ' ')
 		str++;
+	if (str[ft_strlen(str) - 1] == '\n')
+		str[ft_strlen(str) - 1] = '\0';
 	split = ft_split(str, ',');
 	if (!split || !split[0] || !split[1] || !split[2] || split[3])
 		return (write(2, "Error: RGB must have exactly 3 values\n", 38), -1);

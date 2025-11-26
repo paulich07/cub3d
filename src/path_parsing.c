@@ -6,14 +6,14 @@
 /*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 10:47:06 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/11/26 15:02:02 by sel-khao         ###   ########.fr       */
+/*   Updated: 2025/11/26 19:26:08 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
 //validate theres nothing else after the path
-static int	validate_line_end(char *line, int i)
+int	validate_line_end(char *line, int i)
 {
 	while (line[i])
 	{
@@ -45,21 +45,25 @@ int	is_config_line(char *line)
 }
 
 //routes each line to its appropriate handler
-static int	parse_config_line(t_window *win, char *line)
+int	parse_config_line(t_window *win, char *line)
 {
+	int result;
+	
+	result = 0;
 	if (ft_strncmp(line, "NO ", 3) == 0)
-		return (handle_texture(win, line, &win->path_no));
+		result = handle_texture(win, line, &win->path_no);
 	else if (ft_strncmp(line, "SO ", 3) == 0)
-		return (handle_texture(win, line, &win->path_so));
+		result = handle_texture(win, line, &win->path_so);
 	else if (ft_strncmp(line, "WE ", 3) == 0)
-		return (handle_texture(win, line, &win->path_we));
+		result = handle_texture(win, line, &win->path_we);
 	else if (ft_strncmp(line, "EA ", 3) == 0)
-		return (handle_texture(win, line, &win->path_ea));
+		result = handle_texture(win, line, &win->path_ea);
 	else if (ft_strncmp(line, "F ", 2) == 0)
-		return (handle_color(win, line, &win->rgb_floor, &win->floor_set));
+		result = handle_color(win, line, &win->rgb_floor, &win->floor_set);
 	else if (ft_strncmp(line, "C ", 2) == 0)
-		return (handle_color(win, line, &win->rgb_ceiling, &win->ceiling_set));
-	return (0);
+		result = handle_color(win, line, &win->rgb_ceiling, &win->ceiling_set);
+	printf("DEBUG: Parsing line '%s' -> result: %d\n", line, result);
+	return (result);
 }
 
 int	parse_paths(t_window *win, char *filename)
@@ -90,8 +94,36 @@ int	parse_paths(t_window *win, char *filename)
 	return (0);
 }
 
-//extract each path line
 char	*extract_path(char *line)
+{
+	int		i;
+	int		j;
+	char	*path;
+
+	i = 2;
+	while (line[i] == ' ' || line[i] == '\t')
+		i++;
+	j = i;
+	while (line[j] && line[j] != '\n')
+		j++;
+	path = malloc(sizeof(char) * (j - i + 1));
+	if (!path)
+		return (NULL);
+	j = 0;
+	while (line[i] && line[i] != '\n')
+	{
+		path[j] = line[i];
+		i++;
+		j++;
+	}
+	path[j] = '\0';
+	while (j > 0 && (path[j-1] == ' ' || path[j-1] == '\t'))
+		path[--j] = '\0';
+	return (path);
+}
+
+//extract each path line
+/* char	*extract_path(char *line)
 {
 	int		i;
 	int		j;
@@ -117,4 +149,4 @@ char	*extract_path(char *line)
 		return (NULL);
 	}
 	return (path);
-}
+} */

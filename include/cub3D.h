@@ -6,7 +6,7 @@
 /*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 15:28:01 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/26 16:04:14 by sel-khao         ###   ########.fr       */
+/*   Updated: 2025/11/26 19:26:16 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ typedef struct s_ray
 
 typedef struct s_data
 {
+	int			escape_found;
 	void		*mlx;
 	void		*win;
 	t_img		*win_img;
@@ -99,9 +100,9 @@ typedef struct s_data
 
 //new ones
 int		validate_and_convert_rgb(char **split);
-void	check_boundary_escape(t_window *win, int y, int x, int **visited);
+void	check_boundary_escape(t_window *win, int y, int x);
 void	flood_fill_neighbors(t_window *win, int y, int x, int **visited);
-
+char	*normalize_map_line(char *line, int target_width);
 int		check_map_enclosure_with_flood_fill(t_window *win);
 void	flood_fill(t_window *win, int y, int x, int **visited);
 int		verify_config_complete(t_window *win);
@@ -117,6 +118,8 @@ int		is_directory(char *filename);
 int		is_valid_file(char *filename);
 
 // Parsing
+int	validate_line_end(char *line, int i);
+int		parse_config_line(t_window *win, char *line);
 int		parse_rgb(char *line);
 char	*extract_path(char *line);
 int		parse_paths(t_window *win, char *filename);
