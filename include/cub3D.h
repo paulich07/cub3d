@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
+/*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 15:28:01 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/26 19:26:16 by sel-khao         ###   ########.fr       */
+/*   Updated: 2025/11/26 23:27:23 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@
 
 # define WINDOW_WIDTH	800
 # define WINDOW_HEIGHT	600
+# define TEXTURE_WIDTH	64
+# define TEXTURE_HEIGHT	64
+
 # define ROT_ANGLE		0.01
 # define MOV_SPEED		0.005
 # define MAX_STEPS		100
@@ -96,6 +99,10 @@ typedef struct s_data
 	char		*path_ea;
 	int			moving;
 	int			keycode;
+	t_img		*no;
+	t_img		*so;
+	t_img		*we;
+	t_img		*ea;
 }	t_window;
 
 //new ones
@@ -118,14 +125,15 @@ int		is_directory(char *filename);
 int		is_valid_file(char *filename);
 
 // Parsing
-int	validate_line_end(char *line, int i);
+int		validate_line_end(char *line, int i);
 int		parse_config_line(t_window *win, char *line);
 int		parse_rgb(char *line);
 char	*extract_path(char *line);
 int		parse_paths(t_window *win, char *filename);
 
 // Textures
-int		check_texture(char *name, char *path);
+int		check_texture_path(char *path);
+int		init_textures(t_window *win);
 
 // Map (allocation)
 int		is_valid_map_size(t_window *win);

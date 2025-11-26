@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
+/*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 08:36:59 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/11/26 19:47:22 by sel-khao         ###   ########.fr       */
+/*   Updated: 2025/11/26 22:52:55 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,13 +60,16 @@ int	main(int argc, char **argv)
 
 	mlx_loop(win.mlx);
 	printf("DEBUG: MLX loop started\n");
-/* 	init_window(&win);
+/*
+	init_textures(&win);
+	init_window(&win);
 	init_win_img(&win);
 	mlx_key_hook(win.win, key_press, &win);
 	mlx_hook(win.win, KeyPress, KeyPressMask, key_press, &win);
 	mlx_hook(win.win, KeyRelease, KeyReleaseMask, key_release, &win);
 	mlx_hook(win.win, 17, 0, close_window, &win);
 	mlx_loop_hook(win.mlx, engine, &win);
-	mlx_loop(win.mlx); */
+	mlx_loop(win.mlx);
+*/
 	return (0);
 }

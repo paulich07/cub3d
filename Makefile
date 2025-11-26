@@ -25,7 +25,6 @@ LIBFT_HEADERS_DIR = $(LIBFT_DIR)/include
 MINILIBX_URL = https://cdn.intra.42.fr/document/document/36820/minilibx-linux.tgz
 # MINILIBX_URL = https://github.com/42Paris/minilibx-linux.git libs/minilibx-linux
 
-
 # Compiler
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -g -I$(HEADERS_DIR) -I$(SRC_DIR) -I$(LIBFT_DIR) -I$(LIBFT_HEADERS_DIR) -I$(MINILIBX_DIR)
@@ -53,8 +52,8 @@ SRCS =	$(SRC_DIR)/main.c \
 		$(SRC_DIR)/window.c \
 		$(SRC_DIR)/flood_fill.c \
 		$(SRC_DIR)/utils.c \
-		$(SRC_DIR)/validate.c		
-# 		$(SRC_DIR)/textures.c \
+		$(SRC_DIR)/validate.c \
+		$(SRC_DIR)/textures.c
 
 LIBFT = $(LIBFT_DIR)/libft.a
 MINILIBX = $(MINILIBX_DIR)/libmlx.a

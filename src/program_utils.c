@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   program_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
+/*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 17:20:24 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/26 14:07:36 by sel-khao         ###   ########.fr       */
+/*   Updated: 2025/11/26 23:11:06 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
-
 
 void	free_paths(t_window *win)
 {
@@ -31,16 +30,14 @@ void	free_paths(t_window *win)
 // distrugge e libera window
 void	exit_program(t_window *win, char *s, int error)
 {
-	// if (win->img_floor)
-	// 	mlx_destroy_image(win->mlx, win->img_floor);
-	// if (win->img_wall)
-	// 	mlx_destroy_image(win->mlx, win->img_wall);
-	// if (win->img_player)
-	// 	mlx_destroy_image(win->mlx, win->img_player);
-	// if (win->img_collect)
-	// 	mlx_destroy_image(win->mlx, win->img_collect);
-	// if (win->img_exit)
-	// 	mlx_destroy_image(win->mlx, win->img_exit);
+	if (win->no)
+		mlx_destroy_image(win->mlx, win->no);
+	if (win->so)
+		mlx_destroy_image(win->mlx, win->so);
+	if (win->we)
+		mlx_destroy_image(win->mlx, win->we);
+	if (win->ea)
+		mlx_destroy_image(win->mlx, win->ea);
 	free_paths(win);
 	if (win->map)
 		ft_free_mtx(win->map);
