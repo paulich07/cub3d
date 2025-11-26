@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 08:36:59 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/11/17 17:04:45 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/26 13:52:08 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ int	main(int argc, char **argv)
 	init_window(&win);
 	init_win_img(&win);
 	mlx_key_hook(win.win, key_press, &win);
+	mlx_hook(win.win, KeyPress, KeyPressMask, key_press, &win);
+	mlx_hook(win.win, KeyRelease, KeyReleaseMask, key_release, &win);
 	mlx_hook(win.win, 17, 0, close_window, &win);
 	mlx_loop_hook(win.mlx, engine, &win);
 	mlx_loop(win.mlx);

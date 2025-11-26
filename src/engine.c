@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 21:16:13 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/25 01:27:54 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/26 13:40:06 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int	engine(t_window *win)
 	// printf("engine working\n");
 
 	x = 0;
+	handle_input(win);
 	draw_background(win);
 	while (x < WINDOW_WIDTH)
 	{
