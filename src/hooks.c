@@ -6,29 +6,16 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 20:13:57 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/25 19:05:44 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/26 13:45:13 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-// int	key_hook(int keycd, t_window *win)
-// {
-// 	if (keycd == XK_w)
-// 		mv_player(win, win->x, win->y -1);
-// 	else if (keycd == XK_s)
-// 		mv_player(win, win->x, win->y +1);
-// 	else if (keycd == XK_a)
-// 		mv_player(win, win->x - 1, win->y);
-// 	else if (keycd == XK_d)
-// 		mv_player(win, win->x + 1, win->y);
-// 	else if (keycd == XK_Escape)
-// 		cls_win(win);
-// 	return (0);
-// }
-
 int	key_press(int keycode, t_window *win)
 {
+	if (!win)
+		exit_program(win, "key_press error, window not found", 1);
 	if (keycode == XK_Escape)
 		exit_program(win, "Exit", 0);
 	if (keycode == XK_a)
@@ -43,9 +30,29 @@ int	key_press(int keycode, t_window *win)
 		rotate_player(win, ROT_ANGLE);
 	else if (keycode == XK_Left)
 		rotate_player(win, -ROT_ANGLE);
-	// else if (keycode == XK_Up)
-	// 	move_player(win, 0, -1);
-	// else if (keycode == XK_Down)
-	// 	move_player(win, 0, 1);
+	win->moving = 1;
+	win->keycode = keycode;
 	return (1);
+}
+
+int	key_release(int keycode, t_window *win)
+{
+	if (!win)
+		exit_program(win, "key_release error, window not found", 1);
+	if (keycode == XK_a || keycode == XK_d
+		|| keycode == XK_w || keycode == XK_s
+		|| keycode == XK_Left || keycode == XK_Right)
+	{
+		win->moving = 0;
+		win->keycode = 0;
+	}
+	return (1);
+}
+
+void	handle_input(t_window *win)
+{
+	if (!win)
+		exit_program(win, "handle_input error, window not found", 1);
+	if (win->moving)
+		key_press(win->keycode, win);
 }

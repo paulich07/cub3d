@@ -6,7 +6,7 @@
 /*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 15:28:01 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/26 15:20:39 by sel-khao         ###   ########.fr       */
+/*   Updated: 2025/11/26 16:04:14 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@
 
 # define WINDOW_WIDTH	800
 # define WINDOW_HEIGHT	600
-# define ROT_ANGLE		0.1
-# define MOV_SPEED		0.5
+# define ROT_ANGLE		0.01
+# define MOV_SPEED		0.005
 # define MAX_STEPS		100
 # define FOV_OFFSET		0.66
 
@@ -93,6 +93,8 @@ typedef struct s_data
 	char		*path_so;
 	char		*path_we;
 	char		*path_ea;
+	int			moving;
+	int			keycode;
 }	t_window;
 
 //new ones
@@ -173,6 +175,8 @@ int		engine(t_window *win);
 
 // Hooks
 int		key_press(int keycode, t_window *win);
+int		key_release(int keycode, t_window *win);
+void	handle_input(t_window *win);
 
 // Cleaning
 
@@ -184,6 +188,5 @@ void	ft_free_mtx(char **str);
 // Utils
 double	ft_fabs(double x);
 int		is_wall(t_window *win, int x, int y);
-double	deg_to_rad(double deg);
 
 #endif
