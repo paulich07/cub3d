@@ -6,34 +6,16 @@
 /*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 14:11:53 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/11/26 19:45:19 by sel-khao         ###   ########.fr       */
+/*   Updated: 2025/11/27 13:24:29 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-/* static int	is_valid_flood_position(t_window *win, int y, int x)
-{
-	int	real_height;
-
-	real_height = 0;
-	while (real_height < win->map_height && win->map[real_height] != NULL)
-		real_height++;
-	if (y < 0 || y >= real_height || x < 0)
-		return (0);
-	if (!win->map[y] || x >= (int)ft_strlen(win->map[y]))
-		return (0);
-	if (win->map[y][x] == '1' || win->map[y][x] == ' ')
-		return (0);
-	return (1);
-} */
-
 void	check_boundary_escape(t_window *win, int y, int x)
 {
-    // Only check if we're actually at the map boundaries
     if (y == 0 || y == win->map_height - 1 || x == 0 || x == win->map_width - 1)
     {
-        // If we're at a boundary AND it's a walkable tile, that's an escape
         if (win->map[y][x] == '0' || win->map[y][x] == 'N' ||
             win->map[y][x] == 'S' || win->map[y][x] == 'E' ||
             win->map[y][x] == 'W')
@@ -66,7 +48,7 @@ void	flood_fill(t_window *win, int y, int x, int **visited)
         win->escape_found = 1;
         return ;
     }
-    if (win->map[y][x] == '1' || win->map[y][x] == ' ')
+    if (win->map[y][x] == '1')
         return ;
     if (visited[y][x])
         return ;
@@ -79,30 +61,6 @@ void	flood_fill(t_window *win, int y, int x, int **visited)
     flood_fill(win, y, x - 1, visited);
     flood_fill(win, y, x + 1, visited);
 }
-
-/* void	flood_fill(t_window *win, int y, int x, int **visited)
-{
-	if (win->escape_found)
-		return ;
-	if (!is_valid_flood_position(win, y, x))
-	{
-		if (y >= 0 && y < win->map_height && x >= 0 && x < (int)ft_strlen(win->map[y]))
-		{
-			if (win->map[y][x] == ' ')
-				win->escape_found = 1;
-		}
-		else
-			win->escape_found = 1;
-		return ;
-	}
-	if (visited[y][x])
-		return ;
-	visited[y][x] = 1;
-	check_boundary_escape(win, y, x);
-	if (win->escape_found)
-		return ;
-	flood_fill_neighbors(win, y, x, visited);
-} */
 
 int	check_map_enclosure_with_flood_fill(t_window *win)
 {

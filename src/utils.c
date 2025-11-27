@@ -6,7 +6,7 @@
 /*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 19:42:11 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/26 20:06:24 by sel-khao         ###   ########.fr       */
+/*   Updated: 2025/11/27 13:24:45 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	is_wall(t_window *win, int x, int y)
 {
 	if (x < 0 || x >= win->map_width || y < 0 || y >= win->map_height)
 		return (1);
-	if (win->map[y][x] == '1' || win->map[y][x] == ' ')
+	if (win->map[y][x] == '1')
 		return (1);
 	return (0);
 }

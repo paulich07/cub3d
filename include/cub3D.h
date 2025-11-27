@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
+/*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 15:28:01 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/26 23:27:23 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/27 13:23:22 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ typedef struct s_data
 }	t_window;
 
 //new ones
+void	normalize_spaces_to_walls(t_window *win);
 int		validate_and_convert_rgb(char **split);
 void	check_boundary_escape(t_window *win, int y, int x);
 void	flood_fill_neighbors(t_window *win, int y, int x, int **visited);

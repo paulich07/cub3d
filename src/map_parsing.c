@@ -6,7 +6,7 @@
 /*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 16:56:55 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/26 19:09:35 by sel-khao         ###   ########.fr       */
+/*   Updated: 2025/11/27 13:23:49 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	parse_map(t_window *win)
 	printf("DEBUG: Starting parse_map\n");
 	if (!win || !win->map)
 		exit_program(win, "Map not found", 1);
+	normalize_spaces_to_walls(win);
 	printf("DEBUG: Checking map characters\n");
 	if (sign(win) == -1)
 		exit_program(win, "Invalid character in map", 1);

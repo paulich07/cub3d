@@ -6,11 +6,32 @@
 /*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 17:21:32 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/26 18:55:46 by sel-khao         ###   ########.fr       */
+/*   Updated: 2025/11/27 13:23:09 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
+void	normalize_spaces_to_walls(t_window *win)
+{
+	int	i;
+	int	j;
+
+	if (!win || !win->map)
+		return ;
+	i = 0;
+	while (i < win->map_height && win->map[i])
+	{
+		j = 0;
+		while (win->map[i][j])
+		{
+			if (win->map[i][j] == ' ')
+				win->map[i][j] = '1';
+			j++;
+		}
+		i++;
+	}
+}
 
 int	is_map_line(char *line)
 {
@@ -30,20 +51,6 @@ int	is_map_line(char *line)
 	}
 	return (1);
 }
-
-/* int	is_map_line(char *line)
-{
-	if (ft_strncmp(line, "NO ", 3) == 0
-		|| ft_strncmp(line, "SO ", 3) == 0
-		|| ft_strncmp(line, "EA ", 3) == 0
-		|| ft_strncmp(line, "WE ", 3) == 0
-		|| ft_strncmp(line, "F ", 2) == 0
-		|| ft_strncmp(line, "C ", 2) == 0
-		|| line[0] == '\n'
-		|| ft_strlen(line) <= 0)
-		return (0);
-	return (1);
-} */
 
 void	print_map(t_window *win)
 {
@@ -69,19 +76,3 @@ void	print_map(t_window *win)
 		i++;
 	}
 }
-
-/* void	print_map(t_window *win)
-{
-	int	i;
-
-	if (!win || !win->map) {
-		printf("Map is NULL!\n");
-		return;
-	}
-	i = 0;
-	while (i < win->map_height && win->map[i])
-	{
-		printf("Map[%d]: %s\n", i, win->map[i]);
-		i++;
-	}
-} */

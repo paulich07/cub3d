@@ -6,7 +6,7 @@
 /*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 08:52:41 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/11/26 19:27:27 by sel-khao         ###   ########.fr       */
+/*   Updated: 2025/11/27 13:22:34 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,39 +54,6 @@ int	allocate_map_from_file(t_window *win, int fd)
 	return (1);
 }
 
-/* int	allocate_map_from_file(t_window *win, int fd)
-{
-	char	*line;
-	int		i;
-
-	i = 0;
-	line = get_next_line(fd);
-	if (!line)
-		return (0);
-	while (line && !is_map_line(line))
-	{
-		free(line);
-		line = get_next_line(fd);
-	}
-	while (line != NULL && i < win->map_height)
-	{
-		if (is_config_line(line))
-			return (free(line), 0);
-		if (line[0] == '\n')
-			return (free(line), 0);
-		if (line[ft_strlen(line) - 1] == '\n')
-			line[ft_strlen(line) - 1] = '\0';
-		win->map[i] = normalize_map_line(line, win->map_width);
-		if (!win->map[i])
-			return (free(line), 0);
-		free(line);
-		i++;
-		line = get_next_line(fd);
-	}
-	win->map[i] = NULL;
-	return (1);
-} */
-
 void	count_map_size(t_window *win, char *filename)
 {
 	int		fd;
@@ -117,34 +84,6 @@ void	count_map_size(t_window *win, char *filename)
 	free(line);
 	close(fd);
 }
-
-/* void	count_map_size(t_window *win, char *filename)
-{
-	int		fd;
-	char	*line;
-	int		len;
-
-	fd = open(filename, O_RDONLY);
-	if (fd < 0)
-		exit_program(win, "Error in file opening", 1);
-	line = get_next_line(fd);
-	while (line)
-	{
-		if (is_map_line(line))
-		{
-			win->map_height++;
-			len = ft_strlen(line);
-			if (line[len - 1] == '\n')
-				len--;
-			if (len > win->map_width)
-				win->map_width = len;
-		}
-		free(line);
-		line = get_next_line(fd);
-	}
-	free(line);
-	close(fd);
-} */
 
 char	*normalize_map_line(char *line, int target_width)
 {
