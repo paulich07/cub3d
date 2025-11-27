@@ -6,13 +6,12 @@
 /*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 10:47:06 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/11/26 19:26:08 by sel-khao         ###   ########.fr       */
+/*   Updated: 2025/11/27 16:54:34 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-//validate theres nothing else after the path
 int	validate_line_end(char *line, int i)
 {
 	while (line[i])
@@ -24,7 +23,6 @@ int	validate_line_end(char *line, int i)
 	return (1);
 }
 
-//check correct input element
 int	is_config_line(char *line)
 {
 	if (!line || line[0] == '\n')
@@ -44,7 +42,6 @@ int	is_config_line(char *line)
 	return (0);
 }
 
-//routes each line to its appropriate handler
 int	parse_config_line(t_window *win, char *line)
 {
 	int result;
@@ -62,7 +59,6 @@ int	parse_config_line(t_window *win, char *line)
 		result = handle_color(win, line, &win->rgb_floor, &win->floor_set);
 	else if (ft_strncmp(line, "C ", 2) == 0)
 		result = handle_color(win, line, &win->rgb_ceiling, &win->ceiling_set);
-	printf("DEBUG: Parsing line '%s' -> result: %d\n", line, result);
 	return (result);
 }
 
@@ -122,31 +118,3 @@ char	*extract_path(char *line)
 	return (path);
 }
 
-//extract each path line
-/* char	*extract_path(char *line)
-{
-	int		i;
-	int		j;
-	char	*path;
-
-	i = 2;
-	while (line[i] == ' ' || line[i] == '\t')
-		i++;
-	j = 0;
-	path = malloc(sizeof(char) * (ft_strlen(line + i) + 1));
-	if (!path)
-		return (NULL);
-	while (line[i] && line[i] != '\n' && line[i] != ' ' && line[i] != '\t')
-	{
-		path[j] = line[i];
-		i++;
-		j++;
-	}
-	path[j] = '\0';
-	if (!validate_line_end(line, i))
-	{
-		free(path);
-		return (NULL);
-	}
-	return (path);
-} */

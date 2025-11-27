@@ -6,20 +6,23 @@
 /*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 16:56:55 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/27 13:23:49 by sel-khao         ###   ########.fr       */
+/*   Updated: 2025/11/27 16:52:34 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-// se fallisce exit program + svuota win e mappa
+
 void	parse_map(t_window *win)
 {
 	printf("DEBUG: Starting parse_map\n");
 	if (!win || !win->map)
 		exit_program(win, "Map not found", 1);
+	printf("=============BEFORE================");
+	print_map(win);
 	normalize_spaces_to_walls(win);
-	printf("DEBUG: Checking map characters\n");
+	printf("=============AFTER================");
+	print_map(win);
 	if (sign(win) == -1)
 		exit_program(win, "Invalid character in map", 1);
 	printf("DEBUG: Initializing player\n");

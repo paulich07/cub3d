@@ -3,17 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   player_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
+/*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 09:01:17 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/11/25 18:46:33 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/27 16:55:38 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-// to do add direction
-// move player asdw
 int	move_player(t_window *win, double x, double y)
 {
 	if (!win)
@@ -26,7 +24,6 @@ int	move_player(t_window *win, double x, double y)
 	return (0);
 }
 
-// rotate player with arrows, direction vector and plane vector
 void	rotate_player(t_window *win, double rot_angle)
 {
 	double	old_dir_x;
@@ -55,7 +52,6 @@ int	set_player_position(t_window *win, double y, double x)
 	return (0);
 }
 
-// to do error handling? valid chars
 int	set_player_direction(t_window *win, char c)
 {
 	if (!win)

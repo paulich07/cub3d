@@ -6,7 +6,7 @@
 /*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 17:21:32 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/27 13:23:09 by sel-khao         ###   ########.fr       */
+/*   Updated: 2025/11/27 18:59:11 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,10 @@ void	print_map(t_window *win)
 		printf("Map is NULL!\n");
 		return;
 	}
-	
 	i = 0;
 	while (i < win->map_height && win->map[i])
 	{
 		printf("Map[%d]: '", i);
-		// Stampa carattere per carattere per vedere spazi
 		for (int j = 0; j < (int)ft_strlen(win->map[i]); j++) {
 			if (win->map[i][j] == ' ')
 				printf(" ");

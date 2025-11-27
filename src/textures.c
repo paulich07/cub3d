@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
+/*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 16:53:58 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/26 23:28:32 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/27 16:56:03 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ int	check_texture_path(char *path)
 		return (write(2, "Missing Texture\n", 17), -1);
 	if (ft_strlen(path) < 4)
 		return (write(2, "Error, invalid .xmp\n", 21), -1);
-	len = ft_strlen(path) - 4; //.xmp starts at
-	// check if is file or directory opening the file
+	len = ft_strlen(path) - 4;
 	if (is_directory(path))
 		return (write(2, "Error, texture is a directory\n", 30), -1);
 	return (1);

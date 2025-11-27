@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   program_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
+/*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 17:20:24 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/26 23:11:06 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/27 16:55:42 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ void	exit_program(t_window *win, char *s, int error)
 		ft_free_mtx(win->map);
 	if (win->win_img)
 	{
-		// mlx_destroy_image frees also addr
 		if (win->win_img->img)
 			mlx_destroy_image(win->mlx, win->win_img->img);
 		free(win->win_img);
