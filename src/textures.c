@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
+/*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 16:53:58 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/27 16:56:03 by sel-khao         ###   ########.fr       */
+/*   Updated: 2025/11/27 22:51:31 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ int	load_texture(t_window *win, t_img *img, char *path)
 	img = malloc(sizeof(t_img));
 	if (!img)
 		exit_program(win, "load_texture malloc error", 1);
-	img->img = mlx_new_image(win->mlx, TEXTURE_WIDTH, TEXTURE_HEIGHT);
+	img->img = mlx_xpm_to_image(win->mlx, &path, &img->width, &img->height);
 	if (!img->img)
-		exit_program(win, "load_texture mlx_new_image error", 1);
+		exit_program(win, "load_texture mlx_xpm_to_image error", 1);
 	img->addr = mlx_get_data_addr(img->img, &img->bpp,
 			&img->line_len, &img->endian);
 	if (!img->addr)
