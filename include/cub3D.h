@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
+/*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 15:28:01 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/28 01:42:57 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/28 13:42:14 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,9 @@ typedef struct s_data
 }	t_window;
 
 //new ones
+char	*create_padded_line(t_window *win, int i);
+char	*skip_config_lines(int fd);
+void	apply_padding_and_normalize(t_window *win);
 void	normalize_spaces_to_walls(t_window *win);
 int		validate_and_convert_rgb(char **split);
 void	check_boundary_escape(t_window *win, int y, int x);

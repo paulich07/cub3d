@@ -6,7 +6,7 @@
 /*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 14:11:53 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/11/27 13:24:29 by sel-khao         ###   ########.fr       */
+/*   Updated: 2025/11/28 12:08:36 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,25 +41,25 @@ void	flood_fill_neighbors(t_window *win, int y, int x, int **visited)
 
 void	flood_fill(t_window *win, int y, int x, int **visited)
 {
-    if (win->escape_found)
-        return ;
-    if (y < 0 || y >= win->map_height || x < 0 || x >= win->map_width)
-    {
-        win->escape_found = 1;
-        return ;
-    }
-    if (win->map[y][x] == '1')
-        return ;
-    if (visited[y][x])
-        return ;
-    visited[y][x] = 1;
-    check_boundary_escape(win, y, x);
-    if (win->escape_found)
-        return ;
-    flood_fill(win, y - 1, x, visited);
-    flood_fill(win, y + 1, x, visited);
-    flood_fill(win, y, x - 1, visited);
-    flood_fill(win, y, x + 1, visited);
+	if (win->escape_found)
+		return ;
+	if (y < 0 || y >= win->map_height || x < 0 || x >= win->map_width)
+	{
+		win->escape_found = 1;
+		return ;
+	}
+	if (win->map[y][x] == '1')
+		return ;
+	if (visited[y][x])
+		return ;
+	visited[y][x] = 1;
+	check_boundary_escape(win, y, x);
+	if (win->escape_found)
+		return ;
+	flood_fill(win, y - 1, x, visited);
+	flood_fill(win, y + 1, x, visited);
+	flood_fill(win, y, x - 1, visited);
+	flood_fill(win, y, x + 1, visited);
 }
 
 int	check_map_enclosure_with_flood_fill(t_window *win)

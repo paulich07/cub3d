@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
+/*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 04:10:05 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/28 02:10:22 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/28 12:08:07 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	draw_column(t_window *win, int x, int start, int end, int color)
 
 int	get_texture_color(t_img *img, int x, int y)
 {
-	return (0x789CAC)
+	return (0x789CAC);
 }
 
 int	calculate_texture_x(t_img *win, int x, int y)

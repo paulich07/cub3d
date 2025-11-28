@@ -6,13 +6,12 @@
 /*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 15:03:42 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/11/26 19:15:52 by sel-khao         ###   ########.fr       */
+/*   Updated: 2025/11/28 13:10:57 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-//verify all elements r present
 int	verify_config_complete(t_window *win)
 {
 	if (win->floor_set == 0 || win->ceiling_set == 0)
@@ -24,7 +23,6 @@ int	verify_config_complete(t_window *win)
 	return (1);
 }
 
-// More robust texture validation
 int	validate_all_textures(t_window *win)
 {
 	if (!val_tex_path(win->path_no) || !val_tex_path(win->path_so)

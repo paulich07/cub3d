@@ -6,17 +6,23 @@
 /*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 08:52:41 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/11/27 19:00:02 by sel-khao         ###   ########.fr       */
+/*   Updated: 2025/11/28 13:42:57 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int	is_valid_map_size(t_window *win)
+char	*skip_config_lines(int fd)
 {
-	if (win->map_width < 3 || win->map_height < 3)
-		return (0);
-	return (1);
+	char	*line;
+
+	line = get_next_line(fd);
+	while (line && !is_map_line(line))
+	{
+		free(line);
+		line = get_next_line(fd);
+	}
+	return (line);
 }
 
 int	allocate_map_from_file(t_window *win, int fd)
@@ -25,14 +31,9 @@ int	allocate_map_from_file(t_window *win, int fd)
 	int		i;
 
 	i = 0;
-	line = get_next_line(fd);
+	line = skip_config_lines(fd);
 	if (!line)
 		return (0);
-	while (line && !is_map_line(line))
-	{
-		free(line);
-		line = get_next_line(fd);
-	}
 	while (line != NULL && i < win->map_height)
 	{
 		if (is_config_line(line))
@@ -41,7 +42,7 @@ int	allocate_map_from_file(t_window *win, int fd)
 			return (free(line), 0);
 		if (line[ft_strlen(line) - 1] == '\n')
 			line[ft_strlen(line) - 1] = '\0';
-		win->map[i] = normalize_map_line(line, win->map_width);
+		win->map[i] = ft_strdup(line);
 		if (!win->map[i])
 			return (free(line), 0);
 		free(line);
