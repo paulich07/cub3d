@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 04:10:05 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/28 15:51:54 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/28 17:42:30 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,16 +63,20 @@ void	draw_column_textures(t_window *win, t_ray *ray, int x)
 	int		color;
 	int		texture_y;
 
+	calculate_texture_x(win, ray);
 	y = ray->draw_start;
 	scaling = 1.0 * ray->texture->height / ray->column_height;
-	calculate_texture_x(win, ray);
-	texture_y = (ray->draw_start - WINDOW_HEIGHT / 2 + ray->column_height / 2)
-		* scaling;
+	texture_y = (int)((ray->draw_start - WINDOW_HEIGHT / 2
+				+ ray->column_height / 2) * scaling);
 	while (y <= ray->draw_end)
 	{
-		color = get_texture_color(ray->texture, x, y);
+		if (texture_y < 0)
+			texture_y = 0;
+		if (texture_y >= ray->texture->height)
+			texture_y = ray->texture->height - 1;
+		color = get_texture_color(ray->texture, ray->texture_x, texture_y);
 		put_pixel_to_img(win->win_img, x, y, color);
-		texture_y += scaling;
+		texture_y += (int)scaling;
 		y++;
 	}
 }
