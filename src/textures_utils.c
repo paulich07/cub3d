@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
+/*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 16:53:58 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/28 18:54:52 by sel-khao         ###   ########.fr       */
+/*   Updated: 2025/11/28 19:25:47 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,9 @@ int	load_texture(t_window *win, t_img *img, char *path)
 {
 	if (!win || !img || !path)
 		exit_program(win, "load_texture error", 1);
-	img = malloc(sizeof(t_img));
 	if (!img)
 		exit_program(win, "load_texture malloc error", 1);
-	img->img = mlx_xpm_to_image(win->mlx, &path, &img->width, &img->height);
+	img->img = mlx_xpm_file_to_image(win->mlx, path, &img->width, &img->height);
 	if (!img->img)
 		exit_program(win, "load_texture mlx_xpm_to_image error", 1);
 	img->addr = mlx_get_data_addr(img->img, &img->bpp,
@@ -83,5 +82,9 @@ int	init_textures(t_window *win)
 	load_texture(win, win->so, win->path_so);
 	load_texture(win, win->we, win->path_we);
 	load_texture(win, win->ea, win->path_ea);
+	printf("Texture loaded - NO: %dx%d\n", win->no->width, win->no->height);
+	printf("Texture loaded - SO: %dx%d\n", win->so->width, win->so->height);
+	printf("Texture loaded - WE: %dx%d\n", win->we->width, win->we->height);
+	printf("Texture loaded - EA: %dx%d\n", win->ea->width, win->ea->height);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 04:10:05 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/28 17:43:41 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/28 19:09:38 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ void	calculate_texture_x(t_window *win, t_ray *ray)
 	else
 		wall_x = win->player_pos_x + ray->perp_wall_dist * ray->dir_x;
 	wall_x -= floor(wall_x);
+	printf("DEBUG: wall_x: %f\n", wall_x);
+	printf("DEBUG: ray texture width: %f\n", (double)ray->texture->width);
 	ray->texture_x = (int)(wall_x * (double)ray->texture->width);
 	if ((ray->side == 0 && ray->dir_x > 0)
 		|| (ray->side == 1 && ray->dir_y < 0))

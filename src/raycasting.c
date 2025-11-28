@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
+/*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 21:41:29 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/28 18:54:45 by sel-khao         ###   ########.fr       */
+/*   Updated: 2025/11/28 19:19:35 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	dda(t_window *win, t_ray *ray)
 // disegno img
 void	raycasting(t_window *win, int x)
 {
-	t_ray	ray;
+	t_ray	ray = {0};
 
 	init_ray(win, &ray, x);
 	dda(win, &ray);

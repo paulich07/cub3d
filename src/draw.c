@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
+/*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 04:10:05 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/28 18:54:00 by sel-khao         ###   ########.fr       */
+/*   Updated: 2025/11/28 19:02:05 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ void	draw_column_textures(t_window *win, t_ray *ray, int x)
 	int		color;
 	int		texture_y;
 
+	if (!win || !ray)
+		exit_program(win, "draw_column_textures Window error", 1);
 	calculate_texture_x(win, ray);
 	y = ray->draw_start;
 	scaling = 1.0 * ray->texture->height / ray->column_height;
@@ -93,5 +95,7 @@ void	projection(t_window *win, t_ray *ray, int x)
 	if (ray->draw_end >= WINDOW_HEIGHT)
 		ray->draw_end = WINDOW_HEIGHT - 1;
 	ray->texture = get_side_texture(win, ray);
+	printf("DEBUG: ray texture: %p\n", ray->texture);
+	printf("DEBUG: ray texture width: %f\n", (double)ray->texture->width);
 	draw_column_textures(win, ray, x);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
+/*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 08:36:59 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/11/28 18:55:02 by sel-khao         ###   ########.fr       */
+/*   Updated: 2025/11/28 19:26:22 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	main(int argc, char **argv)
 	t_window	win;
 	char		*filename;
 
-	win = (t_window){0};
+	ft_memset(&win, 0, sizeof(t_window));
 	if (argc != 2)
 		return (ft_printf("Wrong usage: ./cub3d <map.cub>\n"), 1);
 	filename = argv[1];
@@ -42,6 +42,9 @@ int	main(int argc, char **argv)
 	printf("=== STEP 7: Initialize image ===\n");
 	init_win_img(&win);
 	printf("DEBUG: Image initialized successfully\n");
+	printf("=== STEP 7.5: Initialize textures ===\n");
+	init_textures(&win);
+	printf("DEBUG: Textures initialized successfully\n");
 	printf("=== STEP 8: Setting up hooks ===\n");
 	mlx_key_hook(win.win, key_press, &win);
 	printf("DEBUG: Key hook set\n");
