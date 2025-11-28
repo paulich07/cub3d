@@ -6,7 +6,7 @@
 /*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 09:01:17 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/11/28 12:07:24 by sel-khao         ###   ########.fr       */
+/*   Updated: 2025/11/28 13:50:19 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	init_player(t_window *win)
 		j = -1;
 		while (win->map[i][++j])
 		{
-			if (win->map[i][j] == 'N' || win->map[i][j] == 'S' || 
+			if (win->map[i][j] == 'N' || win->map[i][j] == 'S' ||
 				win->map[i][j] == 'E' || win->map[i][j] == 'W')
 			{
 				player_count++;

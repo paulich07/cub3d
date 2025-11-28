@@ -6,7 +6,7 @@
 /*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 10:47:06 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/11/27 16:54:34 by sel-khao         ###   ########.fr       */
+/*   Updated: 2025/11/28 13:49:31 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ int	is_config_line(char *line)
 
 int	parse_config_line(t_window *win, char *line)
 {
-	int result;
-	
+	int	result;
+
 	result = 0;
 	if (ft_strncmp(line, "NO ", 3) == 0)
 		result = handle_texture(win, line, &win->path_no);
@@ -113,8 +113,7 @@ char	*extract_path(char *line)
 		j++;
 	}
 	path[j] = '\0';
-	while (j > 0 && (path[j-1] == ' ' || path[j-1] == '\t'))
+	while (j > 0 && (path[j - 1] == ' ' || path[j - 1] == '\t'))
 		path[--j] = '\0';
 	return (path);
 }
-

@@ -6,7 +6,7 @@
 /*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 17:21:32 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/28 13:45:07 by sel-khao         ###   ########.fr       */
+/*   Updated: 2025/11/28 13:51:21 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,17 +56,16 @@ int	is_map_line(char *line)
 void	print_map(t_window *win)
 {
 	int	i;
+	int	j;
 
 	if (!win || !win->map)
-	{
-		printf("Map is NULL!\n");
-		return ;
-	}
-	i = 0;
-	while (i < win->map_height && win->map[i])
+		return ((void)printf("Map is NULL!\n"));
+	i = -1;
+	while (++i < win->map_height && win->map[i])
 	{
 		printf("Map[%d]: '", i);
-		for (int j = 0; j < (int)ft_strlen(win->map[i]); j++)
+		j = -1;
+		while (++j < (int)ft_strlen(win->map[i]))
 		{
 			if (win->map[i][j] == ' ')
 				printf(" ");
@@ -74,7 +73,6 @@ void	print_map(t_window *win)
 				printf("%c", win->map[i][j]);
 		}
 		printf("' (len: %zu)\n", ft_strlen(win->map[i]));
-		i++;
 	}
 }
 
@@ -84,4 +82,3 @@ int	is_valid_map_size(t_window *win)
 		return (0);
 	return (1);
 }
-
