@@ -6,7 +6,7 @@
 /*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 13:19:39 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/11/28 18:26:12 by sel-khao         ###   ########.fr       */
+/*   Updated: 2025/11/28 19:31:06 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ int	parse_rgb(char *line)
 	char	**split;
 	char	*str;
 	int		result;
+	int		i;
 
 	str = line + 1;
 	while (*str == ' ')
@@ -69,8 +70,17 @@ int	parse_rgb(char *line)
 	if (str[ft_strlen(str) - 1] == '\n')
 		str[ft_strlen(str) - 1] = '\0';
 	split = ft_split(str, ',');
-	if (!split || !split[0] || !split[1] || !split[2] || split[3])
-		return (write(2, "Error: RGB must have exactly 3 values\n", 38), -1);
+	if (!split)
+		return (write(2, "Error: Memory allocation failed\n", 32), -1);
+	i = 0;
+	while (split[i] && i < 4)
+		i++;
+	if (i != 3 || split[0][0] == '\0' || split[1][0] == '\0'
+		|| split[2][0] == '\0')
+	{
+		ft_free_mtx(split);
+		return (write(2, "Error: RGB empty\n", 17), -1);
+	}
 	result = validate_and_convert_rgb(split);
 	ft_free_mtx(split);
 	return (result);
