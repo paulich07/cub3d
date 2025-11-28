@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
+/*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 15:28:01 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/28 20:50:36 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/28 20:53:17 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,21 +119,22 @@ int		process_map_lines(t_window *win, int fd, char *line);
 //int	process_valid_line(t_window *win, char **line, int *i);
 int		validate_remaining_lines(char *line, int fd);
 
-char	*create_padded_line(t_window *win, int i);
-char	*skip_config_lines(int fd);
-void	apply_padding_and_normalize(t_window *win);
-void	normalize_spaces_to_walls(t_window *win);
-int		validate_and_convert_rgb(char **split);
-void	check_boundary_escape(t_window *win, int y, int x);
-void	flood_fill_neighbors(t_window *win, int y, int x, int **visited);
-char	*normalize_map_line(char *line, int target_width);
-int		check_map_enclosure_with_flood_fill(t_window *win);
-void	flood_fill(t_window *win, int y, int x, int **visited);
-int		verify_config_complete(t_window *win);
+//handle
 int		handle_texture(t_window *win, char *line, char **path_ptr);
 int		handle_color(t_window *win, char *line, int *rgb, int *flag);
-int		validate_all_textures(t_window *win);
-int		val_tex_path(char *path);
+
+//floodfill
+//void	flood_fill_neighbors(t_window *win, int y, int x, int **visited);
+void	flood_fill(t_window *win, int y, int x, int **visited);
+int		check_map_enclosure_with_flood_fill(t_window *win);
+void	check_boundary_escape(t_window *win, int y, int x);
+
+//padding
+char	*create_padded_line(t_window *win, int i);
+void	apply_padding_and_normalize(t_window *win);
+char	*normalize_map_line(char *line, int target_width);
+void	normalize_spaces_to_walls(t_window *win);
+
 int		is_config_line(char *line);
 
 // mlx
@@ -150,6 +151,9 @@ int		parse_config_line(t_window *win, char *line);
 int		parse_rgb(char *line);
 char	*extract_path(char *line);
 int		parse_paths(t_window *win, char *filename);
+int		validate_and_convert_rgb(char **split);
+int		validate_all_textures(t_window *win);
+int		verify_config_complete(t_window *win);
 
 // Textures utils
 t_img	*get_side_texture(t_window *win, t_ray *ray);
@@ -227,5 +231,6 @@ void	ft_free_mtx(char **str);
 // Utils
 double	ft_fabs(double x);
 int		is_wall(t_window *win, int x, int y);
+char	*skip_config_lines(int fd);
 
 #endif
