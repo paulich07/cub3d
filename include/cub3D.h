@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 15:28:01 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/28 21:03:27 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/28 21:12:28 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,14 +110,11 @@ typedef struct s_data
 	t_img		*ea;
 }	t_window;
 
-//new ones
-void	free_paths(t_window *win);
-int		skip_to_map_start(int fd, char **line);
-int		process_map_lines(t_window *win, int fd, char *line);
-//int	handle_empty_line(char **line, int fd, int *map_started);
-//int	process_map_lines(t_window *win, int fd, char **line, int *i);
-//int	process_valid_line(t_window *win, char **line, int *i);
-int		validate_remaining_lines(char *line, int fd);
+// validate
+int		verify_config_complete(t_window *win);
+int		validate_all_textures(t_window *win);
+int		val_tex_path(char *path);
+int		sign(t_window *win);
 
 //handle
 int		handle_texture(t_window *win, char *line, char **path_ptr);
@@ -135,8 +132,6 @@ void	apply_padding_and_normalize(t_window *win);
 char	*normalize_map_line(char *line, int target_width);
 void	normalize_spaces_to_walls(t_window *win);
 
-int		is_config_line(char *line);
-
 // mlx
 void	init_mlx(t_window *win);
 
@@ -146,12 +141,15 @@ int		is_directory(char *filename);
 int		is_readable_file(char *filename);
 int		is_valid_file(char *filename);
 
-// Parsing
+// Path parsing
 int		validate_line_end(char *line, int i);
+int		is_config_line(char *line);
 int		parse_config_line(t_window *win, char *line);
-int		parse_rgb(char *line);
-char	*extract_path(char *line);
 int		parse_paths(t_window *win, char *filename);
+char	*extract_path(char *line);
+
+// Parsing
+int		parse_rgb(char *line);
 int		validate_and_convert_rgb(char **split);
 int		validate_all_textures(t_window *win);
 int		verify_config_complete(t_window *win);
@@ -173,8 +171,10 @@ void	print_map(t_window *win);
 int		is_map_line(char *line);
 
 // Map parsing/validation
+int		skip_to_map_start(int fd, char **line);
+int		process_map_lines(t_window *win, int fd, char *line);
+int		validate_remaining_lines(char *line, int fd);
 void	parse_map(t_window *win);
-// int		check_wall(t_window *config); // se serve cambia nome
 int		sign(t_window *config);
 
 // Player parsing

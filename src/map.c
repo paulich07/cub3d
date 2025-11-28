@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 08:52:41 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/11/28 20:40:17 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/28 21:13:44 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,6 @@ void	check_and_allocate_map(t_window *win, char *filename)
 		close(fd);
 		exit_program(win, "Map allocation from file failed", 1);
 	}
-	print_map(win);
 	close(fd);
 	return ;
 }
