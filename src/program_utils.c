@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 17:20:24 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/28 14:55:58 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/28 14:57:51 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	free_paths(t_window *win)
 		free(win->path_ea);
 }
 
-void free_textures(t_window *win)
+void	free_textures(t_window *win)
 {
 	if (win->no)
 	{
@@ -54,7 +54,6 @@ void free_textures(t_window *win)
 // distrugge e libera window
 void	exit_program(t_window *win, char *s, int error)
 {
-
 	free_textures(win);
 	free_paths(win);
 	if (win->map)

@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 16:53:58 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/28 14:54:24 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/28 14:58:14 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,6 @@ int	load_texture(t_window *win, t_img *img, char *path)
 			&img->line_len, &img->endian);
 	if (!img->addr)
 		exit_program(win, "load_texture mlx_get_data_addr error", 1);
-	img->width = TEXTURE_WIDTH;
-	img->height = TEXTURE_HEIGHT;
 	return (0);
 }
 
