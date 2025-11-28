@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 15:28:01 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/28 15:54:52 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/28 15:57:26 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@
 
 # define WINDOW_WIDTH	800
 # define WINDOW_HEIGHT	600
-# define TEXTURE_WIDTH	64
-# define TEXTURE_HEIGHT	64
 
 # define ROT_ANGLE		0.01
 # define MOV_SPEED		0.005
