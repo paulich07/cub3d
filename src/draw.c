@@ -6,11 +6,11 @@
 /*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 04:10:05 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/28 12:08:07 by sel-khao         ###   ########.fr       */
+/*   Updated: 2025/11/28 18:24:01 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "../include/cub3D.h"
 
 void	fix_fisheye(t_window *win, t_ray *ray)
 {

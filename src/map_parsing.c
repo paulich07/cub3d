@@ -6,11 +6,11 @@
 /*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 16:56:55 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/28 17:40:44 by sel-khao         ###   ########.fr       */
+/*   Updated: 2025/11/28 18:25:27 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "../include/cub3D.h"
 
 int	validate_remaining_lines(char *line, int fd)
 {
@@ -86,39 +86,3 @@ int	allocate_map_from_file(t_window *win, int fd)
 	return (process_map_lines(win, fd, line));
 }
 
-/* int	allocate_map_from_file(t_window *win, int fd)
-{
-	char	*line;
-	int		i;
-	int		map_started;
-
-	i = 0;
-	map_started = 0;
-	line = skip_config_lines(fd);
-	if (!line)
-		return (0);
-	while (line != NULL && i < win->map_height)
-	{
-		if (is_config_line(line))
-			return (free(line), 0);
-		if (line[0] == '\n')
-		{
-			if (map_started)
-				break ;
-			free(line);
-			line = get_next_line(fd);
-			continue ;
-		}
-		map_started = 1;
-		if (line[ft_strlen(line) - 1] == '\n')
-			line[ft_strlen(line) - 1] = '\0';
-		win->map[i] = ft_strdup(line);
-		if (!win->map[i])
-			return (free(line), 0);
-		free(line);
-		i++;
-		line = get_next_line(fd);
-	}
-	win->map[i] = NULL;
-	return (validate_remaining_lines(line, fd));
-} working */

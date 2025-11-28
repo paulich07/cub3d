@@ -6,11 +6,11 @@
 /*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 13:19:39 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/11/26 18:05:23 by sel-khao         ###   ########.fr       */
+/*   Updated: 2025/11/28 18:26:12 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "../include/cub3D.h"
 
 //handles no,so,we,ea
 int	handle_texture(t_window *win, char *line, char **path_ptr)

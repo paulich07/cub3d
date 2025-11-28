@@ -6,11 +6,11 @@
 /*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 15:15:37 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/11/26 15:06:17 by sel-khao         ###   ########.fr       */
+/*   Updated: 2025/11/28 18:20:42 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "../include/cub3D.h"
 
 void	small_free(int size, int **arr)
 {

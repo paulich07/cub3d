@@ -6,11 +6,11 @@
 /*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 08:36:59 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/11/28 16:56:05 by sel-khao         ###   ########.fr       */
+/*   Updated: 2025/11/28 18:24:33 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "../include/cub3D.h"
 
 int	main(int argc, char **argv)
 {

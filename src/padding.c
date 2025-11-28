@@ -6,11 +6,11 @@
 /*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 14:23:54 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/11/28 14:25:52 by sel-khao         ###   ########.fr       */
+/*   Updated: 2025/11/28 18:25:43 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "../include/cub3D.h"
 
 void	normalize_spaces_to_walls(t_window *win)
 {

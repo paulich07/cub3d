@@ -6,11 +6,11 @@
 /*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 14:11:53 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/11/28 15:56:27 by sel-khao         ###   ########.fr       */
+/*   Updated: 2025/11/28 18:24:19 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "../include/cub3D.h"
 
 void	check_boundary_escape(t_window *win, int y, int x)
 {
@@ -84,31 +84,3 @@ int	check_map_enclosure_with_flood_fill(t_window *win)
 	result = !win->escape_found;
 	return (small_free(win->map_height, visited), result);
 }
-
-/* int	check_map_enclosure_with_flood_fill(t_window *win)
-{
-	int	**visited;
-	int	i;
-	int	result;
-	int	real_height;
-
-	win->escape_found = 0;
-	real_height = 0;
-	while (real_height < win->map_height && win->map[real_height] != NULL)
-		real_height++;
-	if (real_height == 0)
-		return (0);
-	visited = malloc(sizeof(int *) * real_height);
-	if (!visited)
-		return (0);
-	i = -1;
-	while (++i < real_height)
-	{
-		visited[i] = ft_calloc(ft_strlen(win->map[i]) + 1, sizeof(int));
-		if (!visited[i])
-			return (small_free(i, visited), 0);
-	}
-	flood_fill(win, (int)win->player_pos_y, (int)win->player_pos_x, visited);
-	result = !win->escape_found;
-	return (small_free(real_height, visited), result);
-} */

@@ -6,11 +6,11 @@
 /*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 15:03:42 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/11/28 13:10:57 by sel-khao         ###   ########.fr       */
+/*   Updated: 2025/11/28 18:26:22 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "../include/cub3D.h"
 
 int	verify_config_complete(t_window *win)
 {
