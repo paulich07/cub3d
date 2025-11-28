@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
+/*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 15:28:01 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/27 13:23:22 by sel-khao         ###   ########.fr       */
+/*   Updated: 2025/11/28 01:42:57 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,10 @@ typedef struct s_ray
 	int			step_x;
 	int			step_y;
 	int			side;
+	int			column_height;
+	int			draw_start;
+	int			draw_end;
+	t_img		*texture;
 }	t_ray;
 
 // plane rappresenta metà dell'ampiezza della finestra
@@ -133,6 +137,7 @@ char	*extract_path(char *line);
 int		parse_paths(t_window *win, char *filename);
 
 // Textures
+t_img	*get_side_texture(t_window *win, t_ray *ray);
 int		check_texture_path(char *path);
 int		init_textures(t_window *win);
 
@@ -180,7 +185,9 @@ void	init_ray(t_window *win, t_ray *ray, int x);
 void	fix_fisheye(t_window *win, t_ray *ray);
 void	put_pixel_to_img(t_img *img, int x, int y, int color);
 void	draw_column(t_window *win, int x, int start, int end, int color);
-void	proiezione(t_window *win, t_ray *ray, int x);
+int		get_texture_color(t_img *win, int x, int y);
+void	draw_column_textures(t_window *win, t_ray *ray, int x);
+void	projection(t_window *win, t_ray *ray, int x);
 
 // Engine
 int		engine(t_window *win);

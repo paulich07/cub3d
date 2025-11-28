@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 21:41:29 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/25 16:37:50 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/28 01:39:38 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	raycasting(t_window *win, int x)
 	init_ray(win, &ray, x);
 	// dda (calcolare distanza perpendicolare, ottengo 1 vect pos e 1 vect dir)
 	dda(win, &ray);
-	// proiezione - draw_start e draw_end
+	// projection - draw_start e draw_end
 	// disegno img
-	proiezione(win, &ray, x);
+	projection(win, &ray, x);
 }

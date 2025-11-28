@@ -6,11 +6,22 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 16:53:58 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/27 22:51:31 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/28 01:48:50 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
+// to do textures walls per ea e we
+t_img	*get_side_texture(t_window *win, t_ray *ray)
+{
+	if (!win || !ray)
+		exit_program(win, "get_side_texture error", 1);
+	if (ray->side == 0)
+		return (win->no);
+	else
+		return (win->so);
+}
 
 // last 4 chars are .xpm
 int	check_texture_path(char *path)
