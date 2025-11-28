@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 17:33:15 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/28 19:46:03 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/28 20:42:17 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	init_ray_step(t_window *win, t_ray *ray)
 // 	rispetto alla direzione in cui guardo e al campo visivo
 void	init_ray(t_window *win, t_ray *ray, int x)
 {
-	double camera_x;
+	double	camera_x;
 
 	if (!win || !ray)
 		exit_program(win, "init_ray error", 1);
@@ -55,10 +55,6 @@ void	init_ray(t_window *win, t_ray *ray, int x)
 	ray->dir_y = win->dir_y + win->plane_y * camera_x;
 	ray->map_x = (int)win->player_pos_x;
 	ray->map_y = (int)win->player_pos_y;
-	// if (ray->dir_x == 0)
-	// 	ray->dir_x = 0.000001;
-	// if (ray->dir_y == 0)
-	// 	ray->dir_y = 0.000001;
 	ray->delta_dist_x = ft_fabs(1 / ray->dir_x);
 	ray->delta_dist_y = ft_fabs(1 / ray->dir_y);
 	init_ray_step(win, ray);

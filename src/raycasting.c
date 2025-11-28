@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 21:41:29 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/28 19:46:03 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/28 20:45:10 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,9 @@ void	dda(t_window *win, t_ray *ray)
 // disegno img
 void	raycasting(t_window *win, int x)
 {
-	t_ray	ray = {0};
+	t_ray	ray;
 
+	ray = (t_ray){0};
 	init_ray(win, &ray, x);
 	dda(win, &ray);
 	projection(win, &ray, x);

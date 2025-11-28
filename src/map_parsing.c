@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 16:56:55 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/28 19:46:03 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/28 20:41:53 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,13 @@ int	skip_to_map_start(int fd, char **line)
 		if ((*line)[0] == '\n')
 		{
 			if (map_started)
-				break;
+				break ;
 			free(*line);
 			*line = get_next_line(fd);
 			continue ;
 		}
 		map_started = 1;
-		break;
+		break ;
 	}
 	return (map_started);
 }
@@ -82,7 +82,5 @@ int	allocate_map_from_file(t_window *win, int fd)
 	map_started = skip_to_map_start(fd, &line);
 	if (!map_started)
 		return (0);
-	
 	return (process_map_lines(win, fd, line));
 }
-

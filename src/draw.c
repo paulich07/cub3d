@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 04:10:05 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/28 20:36:28 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/28 20:43:59 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ void	fix_fisheye(t_window *win, t_ray *ray)
 			ray->perp_wall_dist = (ray->map_x - win->player_pos_x
 					+ (1 - ray->step_x) / 2) / ray->dir_x;
 		}
-		if (ray->perp_wall_dist == 0)
-			ray->perp_wall_dist = 0.01;
 	}
 	else
 	{
@@ -37,9 +35,9 @@ void	fix_fisheye(t_window *win, t_ray *ray)
 			ray->perp_wall_dist = (ray->map_y - win->player_pos_y
 					+ (1 - ray->step_y) / 2) / ray->dir_y;
 		}
-		if (ray->perp_wall_dist == 0)
-			ray->perp_wall_dist = 0.01;
 	}
+	if (ray->perp_wall_dist == 0)
+		ray->perp_wall_dist = 0.01;
 }
 
 void	put_pixel_to_img(t_img *img, int x, int y, int color)
