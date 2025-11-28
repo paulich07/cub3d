@@ -6,7 +6,7 @@
 /*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 08:36:59 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/11/28 18:24:33 by sel-khao         ###   ########.fr       */
+/*   Updated: 2025/11/28 18:55:02 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	main(int argc, char **argv)
 		exit_program(&win, "Map not allocated properly", 1);
 	}
 	parse_map(&win);
-/* 	printf("=== STEP 6: Initialize window ===\n");
+	printf("=== STEP 6: Initialize window ===\n");
 	init_window(&win);
 	printf("DEBUG: Window initialized successfully\n");
 	printf("=== STEP 7: Initialize image ===\n");
@@ -55,8 +55,6 @@ int	main(int argc, char **argv)
 	mlx_loop_hook(win.mlx, engine, &win);
 	printf("DEBUG: Loop hook set\n");
 	mlx_loop(win.mlx);
-	printf("DEBUG: MLX loop started\n"); */
-	//free_paths(&win);
-	free_win(&win);
+	printf("DEBUG: MLX loop started\n");
 	return (0);
 }

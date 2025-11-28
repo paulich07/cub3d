@@ -6,7 +6,7 @@
 /*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 15:28:01 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/28 17:41:06 by sel-khao         ###   ########.fr       */
+/*   Updated: 2025/11/28 18:40:54 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ typedef struct s_ray
 	int			draw_start;
 	int			draw_end;
 	t_img		*texture;
+	int			texture_x;
 }	t_ray;
 
 // plane rappresenta metà dell'ampiezza della finestra
@@ -147,9 +148,10 @@ int		parse_rgb(char *line);
 char	*extract_path(char *line);
 int		parse_paths(t_window *win, char *filename);
 
-// Textures
+// Textures utils
 t_img	*get_side_texture(t_window *win, t_ray *ray);
 int		check_texture_path(char *path);
+int		load_texture(t_window *win, t_img *img, char *path);
 int		init_textures(t_window *win);
 
 // Map (allocation)
@@ -182,6 +184,8 @@ int		init_window(t_window *win);
 int		close_window(t_window *win);
 
 // Program utils
+void	free_paths(t_window *win);
+void	free_textures(t_window *win);
 void	exit_program(t_window *win, char *s, int error);
 
 // Ray casting
@@ -195,10 +199,12 @@ void	init_ray(t_window *win, t_ray *ray, int x);
 // Draw
 void	fix_fisheye(t_window *win, t_ray *ray);
 void	put_pixel_to_img(t_img *img, int x, int y, int color);
-void	draw_column(t_window *win, int x, int start, int end, int color);
-int		get_texture_color(t_img *win, int x, int y);
 void	draw_column_textures(t_window *win, t_ray *ray, int x);
 void	projection(t_window *win, t_ray *ray, int x);
+
+// Draw textures
+int		get_texture_color(t_img *win, int x, int y);
+void	calculate_texture_x(t_window *win, t_ray *ray);
 
 // Engine
 int		engine(t_window *win);

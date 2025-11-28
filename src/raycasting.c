@@ -6,13 +6,14 @@
 /*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 21:41:29 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/28 18:26:09 by sel-khao         ###   ########.fr       */
+/*   Updated: 2025/11/28 18:54:45 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3D.h"
 
 // side = 0 muro verticale
+// ottiene distanza dal centro per una colonna di pixel
 void	dda(t_window *win, t_ray *ray)
 {
 	int	hit;
@@ -38,20 +39,17 @@ void	dda(t_window *win, t_ray *ray)
 			hit = 1;
 		steps++;
 	}
-	// if (hit)
 	fix_fisheye(win, ray);
 }
 
-// ottiene distanza dal centro per una colonna di pixel (lavora con gli img address)
+// init ray (estraggo raggio in base a pos player)
+// dda (calcolare distanza perpendicolare, ottengo 1 vect pos e 1 vect dir)
+// disegno img
 void	raycasting(t_window *win, int x)
 {
 	t_ray	ray;
 
-	// init ray (estraggo raggio in base a pos player)
 	init_ray(win, &ray, x);
-	// dda (calcolare distanza perpendicolare, ottengo 1 vect pos e 1 vect dir)
 	dda(win, &ray);
-	// projection - draw_start e draw_end
-	// disegno img
 	projection(win, &ray, x);
 }

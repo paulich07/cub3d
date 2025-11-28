@@ -6,7 +6,7 @@
 /*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 04:10:05 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/28 18:24:01 by sel-khao         ###   ########.fr       */
+/*   Updated: 2025/11/28 18:54:00 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	fix_fisheye(t_window *win, t_ray *ray)
 {
-	if (!win)
+	if (!win || !ray)
 		exit_program(win, "fix_fisheye Window error", 1);
 	if (ray->side == 0)
 	{
@@ -49,41 +49,36 @@ void	put_pixel_to_img(t_img *img, int x, int y, int color)
 	if (x >= 0 && x < img->width && y >= 0 && y < img->height)
 	{
 		dist = img->addr + (y * img->line_len + x * (img->bpp / 8));
-		*(unsigned int*)dist = color;
+		*(unsigned int *)dist = color;
 	}
 }
 
-void	draw_column(t_window *win, int x, int start, int end, int color)
-{
-	int	y;
-
-	y = start;
-	while (y <= end)
-	{
-		put_pixel_to_img(win->win_img, x, y, color);
-		y++;
-	}
-}
-
-int	get_texture_color(t_img *img, int x, int y)
-{
-	return (0x789CAC);
-}
-
-int	calculate_texture_x(t_img *win, int x, int y)
-{
-	
-}
-
+// per ogni x dello schermo calcola la x della texture
+// capisce quanto stretcharla lungo la colonna (tipo scaling verticale)
+// per ogni y della colonna prende pixel, calcola colore e lo disegna
 void	draw_column_textures(t_window *win, t_ray *ray, int x)
 {
-	double step;
-	
-	step = 1.0 * ray->texture->height / ray->column_height;
-	// capisce quale x della texture usare (prospettiva, tipo scaling orizzontale)
-	// capisce quanto stretcharla lungo la colonna (tipo scaling verticale)
-	// per ogni y della colonna prende pixel, calcola colore e lo disegna
+	double	scaling;
+	int		y;
+	int		color;
+	int		texture_y;
 
+	calculate_texture_x(win, ray);
+	y = ray->draw_start;
+	scaling = 1.0 * ray->texture->height / ray->column_height;
+	texture_y = (int)((ray->draw_start - WINDOW_HEIGHT / 2
+				+ ray->column_height / 2) * scaling);
+	while (y <= ray->draw_end)
+	{
+		if (texture_y < 0)
+			texture_y = 0;
+		if (texture_y >= ray->texture->height)
+			texture_y = ray->texture->height - 1;
+		color = get_texture_color(ray->texture, ray->texture_x, texture_y);
+		put_pixel_to_img(win->win_img, x, y, color);
+		texture_y += (int)scaling;
+		y++;
+	}
 }
 
 void	projection(t_window *win, t_ray *ray, int x)
