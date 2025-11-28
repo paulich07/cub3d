@@ -6,11 +6,27 @@
 /*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 08:52:41 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/11/28 13:42:57 by sel-khao         ###   ########.fr       */
+/*   Updated: 2025/11/28 16:53:47 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
+void	parse_map(t_window *win)
+{
+	printf("DEBUG: Starting parse_map\n");
+	if (!win || !win->map)
+		exit_program(win, "Map not found", 1);
+	if (sign(win) == -1)
+		exit_program(win, "Invalid character in map", 1);
+	printf("DEBUG: Initializing player\n");
+	if (init_player(win) != 1)
+		exit_program(win, "Invalid number of players", 1);
+	printf("DEBUG: Starting flood fill\n");
+	if (!check_map_enclosure_with_flood_fill(win))
+		exit_program(win, "Map is not properly enclosed by walls", 1);
+	printf("DEBUG: parse_map completed successfully\n");
+}
 
 char	*skip_config_lines(int fd)
 {
@@ -23,34 +39,6 @@ char	*skip_config_lines(int fd)
 		line = get_next_line(fd);
 	}
 	return (line);
-}
-
-int	allocate_map_from_file(t_window *win, int fd)
-{
-	char	*line;
-	int		i;
-
-	i = 0;
-	line = skip_config_lines(fd);
-	if (!line)
-		return (0);
-	while (line != NULL && i < win->map_height)
-	{
-		if (is_config_line(line))
-			return (free(line), 0);
-		if (line[0] == '\n')
-			return (free(line), 0);
-		if (line[ft_strlen(line) - 1] == '\n')
-			line[ft_strlen(line) - 1] = '\0';
-		win->map[i] = ft_strdup(line);
-		if (!win->map[i])
-			return (free(line), 0);
-		free(line);
-		i++;
-		line = get_next_line(fd);
-	}
-	win->map[i] = NULL;
-	return (1);
 }
 
 void	count_map_size(t_window *win, char *filename)
@@ -79,29 +67,6 @@ void	count_map_size(t_window *win, char *filename)
 	}
 	free(line);
 	close(fd);
-}
-
-char	*normalize_map_line(char *line, int target_width)
-{
-	char	*new_line;
-	int		i;
-	int		len;
-
-	len = ft_strlen(line);
-	new_line = malloc(target_width + 1);
-	if (!new_line)
-		return (NULL);
-	i = 0;
-	while (i < target_width)
-	{
-		if (i < len && line[i] != '\n')
-			new_line[i] = line[i];
-		else
-			new_line[i] = ' ';
-		i++;
-	}
-	new_line[target_width] = '\0';
-	return (new_line);
 }
 
 void	check_and_allocate_map(t_window *win, char *filename)

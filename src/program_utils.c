@@ -6,7 +6,7 @@
 /*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 17:20:24 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/27 16:55:42 by sel-khao         ###   ########.fr       */
+/*   Updated: 2025/11/28 16:54:43 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,6 @@ void	free_paths(t_window *win)
 		free(win->path_ea);
 }
 
-// svuota win
-// dealloca mappa
-// dealloca eventuali immagini
-// distrugge e libera window
 void	exit_program(t_window *win, char *s, int error)
 {
 	if (win->no)

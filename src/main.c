@@ -6,7 +6,7 @@
 /*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 08:36:59 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/11/28 13:52:07 by sel-khao         ###   ########.fr       */
+/*   Updated: 2025/11/28 16:56:05 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,10 @@ int	main(int argc, char **argv)
 	printf("DEBUG: Map height: %d, width: %d\n", win.map_height, win.map_width);
 	printf("DEBUG: Player pos: %f, %f\n", win.player_pos_x, win.player_pos_y);
 	if (!win.map || !*win.map)
+	{
+		free_paths(&win);
 		exit_program(&win, "Map not allocated properly", 1);
+	}
 	parse_map(&win);
 /* 	printf("=== STEP 6: Initialize window ===\n");
 	init_window(&win);
@@ -53,5 +56,7 @@ int	main(int argc, char **argv)
 	printf("DEBUG: Loop hook set\n");
 	mlx_loop(win.mlx);
 	printf("DEBUG: MLX loop started\n"); */
+	//free_paths(&win);
+	free_win(&win);
 	return (0);
 }

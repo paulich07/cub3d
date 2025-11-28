@@ -6,7 +6,7 @@
 /*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 15:28:01 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/28 13:42:14 by sel-khao         ###   ########.fr       */
+/*   Updated: 2025/11/28 17:41:06 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,14 @@ typedef struct s_data
 }	t_window;
 
 //new ones
+void	free_paths(t_window *win);
+int		skip_to_map_start(int fd, char **line);
+int		process_map_lines(t_window *win, int fd, char *line);
+//int	handle_empty_line(char **line, int fd, int *map_started);
+//int	process_map_lines(t_window *win, int fd, char **line, int *i);
+//int	process_valid_line(t_window *win, char **line, int *i);
+int	validate_remaining_lines(char *line, int fd);
+
 char	*create_padded_line(t_window *win, int i);
 char	*skip_config_lines(int fd);
 void	apply_padding_and_normalize(t_window *win);

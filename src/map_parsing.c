@@ -6,76 +6,119 @@
 /*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 16:56:55 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/28 13:42:03 by sel-khao         ###   ########.fr       */
+/*   Updated: 2025/11/28 17:40:44 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-char	*create_padded_line(t_window *win, int i)
+int	validate_remaining_lines(char *line, int fd)
 {
-	char	*new_line;
-	int		j;
-
-	new_line = malloc(win->map_width + 1);
-	if (!new_line)
-		return (NULL);
-	j = 0;
-	while (j < win->map_width)
+	while (line && line[0] == '\n')
 	{
-		if (j < (int)ft_strlen(win->map[i]) && win->map[i][j] != '\0')
-			new_line[j] = win->map[i][j];
-		else
-			new_line[j] = ' ';
-		j++;
+		free(line);
+		line = get_next_line(fd);
 	}
-	new_line[j] = '\0';
-	return (new_line);
+	if (line && line[0] != '\n')
+		return (free(line), 0);
+	if (line)
+		free(line);
+	return (1);
 }
 
-void	apply_padding_and_normalize(t_window *win)
+int	skip_to_map_start(int fd, char **line)
 {
-	char	**padded_map;
-	int		i;
+	int	map_started;
 
-	padded_map = ft_calloc(win->map_height + 1, sizeof(char *));
-	if (!padded_map)
-		exit_program(win, "Memory allocation failed", 1);
-	i = 0;
-	while (i < win->map_height && win->map[i])
+	map_started = 0;
+	*line = skip_config_lines(fd);
+	if (!*line)
+		return (0);
+	while (*line != NULL)
 	{
-		padded_map[i] = create_padded_line(win, i);
-		if (!padded_map[i])
+		if (is_config_line(*line))
+			return (free(*line), 0);
+		if ((*line)[0] == '\n')
 		{
-			ft_free_mtx(padded_map);
-			exit_program(win, "Memory allocation failed", 1);
+			if (map_started)
+				break;
+			free(*line);
+			*line = get_next_line(fd);
+			continue ;
 		}
-		i++;
+		map_started = 1;
+		break;
 	}
-	padded_map[i] = NULL;
-	ft_free_mtx(win->map);
-	win->map = padded_map;
-	normalize_spaces_to_walls(win);
+	return (map_started);
 }
 
-void	parse_map(t_window *win)
+int	process_map_lines(t_window *win, int fd, char *line)
 {
-	printf("DEBUG: Starting parse_map\n");
-	if (!win || !win->map)
-		exit_program(win, "Map not found", 1);
-	printf("=============ORIGINAL UNPADDED MAP================");
-	print_map(win);
-	if (sign(win) == -1)
-		exit_program(win, "Invalid character in map", 1);
-	printf("DEBUG: Initializing player\n");
-	if (init_player(win) != 1)
-		exit_program(win, "Invalid number of players", 1);
-	printf("DEBUG: Starting flood fill\n");
-	if (!check_map_enclosure_with_flood_fill(win))
-		exit_program(win, "Map is not properly enclosed by walls", 1);
-	printf("DEBUG: parse_map completed successfully\n");
-	apply_padding_and_normalize(win);
-	printf("=============FINAL PADDED MAP================");
-	print_map(win);
-	printf("DEBUG: parse_map completed successfully\n");
+	int	i;
+
+	i = 0;
+	while (line != NULL && i < win->map_height)
+	{
+		if (line[ft_strlen(line) - 1] == '\n')
+			line[ft_strlen(line) - 1] = '\0';
+		win->map[i] = ft_strdup(line);
+		if (!win->map[i])
+			return (free(line), 0);
+		free(line);
+		i++;
+		line = get_next_line(fd);
+		if (line && line[0] == '\n')
+			break ;
+	}
+	win->map[i] = NULL;
+	return (validate_remaining_lines(line, fd));
 }
+
+int	allocate_map_from_file(t_window *win, int fd)
+{
+	char	*line;
+	int		map_started;
+
+	map_started = skip_to_map_start(fd, &line);
+	if (!map_started)
+		return (0);
+	
+	return (process_map_lines(win, fd, line));
+}
+
+/* int	allocate_map_from_file(t_window *win, int fd)
+{
+	char	*line;
+	int		i;
+	int		map_started;
+
+	i = 0;
+	map_started = 0;
+	line = skip_config_lines(fd);
+	if (!line)
+		return (0);
+	while (line != NULL && i < win->map_height)
+	{
+		if (is_config_line(line))
+			return (free(line), 0);
+		if (line[0] == '\n')
+		{
+			if (map_started)
+				break ;
+			free(line);
+			line = get_next_line(fd);
+			continue ;
+		}
+		map_started = 1;
+		if (line[ft_strlen(line) - 1] == '\n')
+			line[ft_strlen(line) - 1] = '\0';
+		win->map[i] = ft_strdup(line);
+		if (!win->map[i])
+			return (free(line), 0);
+		free(line);
+		i++;
+		line = get_next_line(fd);
+	}
+	win->map[i] = NULL;
+	return (validate_remaining_lines(line, fd));
+} working */

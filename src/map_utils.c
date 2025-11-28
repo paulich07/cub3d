@@ -6,32 +6,11 @@
 /*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 17:21:32 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/28 13:51:21 by sel-khao         ###   ########.fr       */
+/*   Updated: 2025/11/28 14:25:46 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
-
-void	normalize_spaces_to_walls(t_window *win)
-{
-	int	i;
-	int	j;
-
-	if (!win || !win->map)
-		return ;
-	i = 0;
-	while (i < win->map_height && win->map[i])
-	{
-		j = 0;
-		while (win->map[i][j])
-		{
-			if (win->map[i][j] == ' ')
-				win->map[i][j] = '1';
-			j++;
-		}
-		i++;
-	}
-}
 
 int	is_map_line(char *line)
 {
