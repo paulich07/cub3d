@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 15:28:01 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/28 20:44:15 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/28 20:50:36 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ int		process_map_lines(t_window *win, int fd, char *line);
 //int	handle_empty_line(char **line, int fd, int *map_started);
 //int	process_map_lines(t_window *win, int fd, char **line, int *i);
 //int	process_valid_line(t_window *win, char **line, int *i);
-int		alidate_remaining_lines(char *line, int fd);
+int		validate_remaining_lines(char *line, int fd);
 
 char	*create_padded_line(t_window *win, int i);
 char	*skip_config_lines(int fd);
