@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 21:16:13 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/28 20:42:09 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/28 21:20:12 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ int	draw_background(t_window *win)
 	i = 0;
 	while (i < half_pixels)
 	{
-		pixel[i] = win->rgb_floor;
+		pixel[i] = win->rgb_ceiling;
 		i++;
 	}
 	while (i < tot_pixels)
 	{
-		pixel[i] = win->rgb_ceiling;
+		pixel[i] = win->rgb_floor;
 		i++;
 	}
 	return (0);
