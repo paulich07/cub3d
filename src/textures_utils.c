@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 16:53:58 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/28 19:46:03 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/28 20:40:32 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,5 @@ int	init_textures(t_window *win)
 	load_texture(win, win->so, win->path_so);
 	load_texture(win, win->we, win->path_we);
 	load_texture(win, win->ea, win->path_ea);
-	printf("Texture loaded - NO: %dx%d\n", win->no->width, win->no->height);
-	printf("Texture loaded - SO: %dx%d\n", win->so->width, win->so->height);
-	printf("Texture loaded - WE: %dx%d\n", win->we->width, win->we->height);
-	printf("Texture loaded - EA: %dx%d\n", win->ea->width, win->ea->height);
 	return (0);
 }

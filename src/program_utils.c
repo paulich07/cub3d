@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 17:20:24 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/28 19:46:03 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/28 20:40:24 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,6 @@ void	free_paths(t_window *win)
 
 void	free_textures(t_window *win)
 {
-	printf("free_textures: win->no = %p\n", (void*)win->no);
-	printf("free_textures: win->so = %p\n", (void*)win->so);
-	printf("free_textures: win->we = %p\n", (void*)win->we);
-	printf("free_textures: win->ea = %p\n", (void*)win->ea);
 	if (win->no)
 	{
 		if (win->no->img)
@@ -54,10 +50,6 @@ void	free_textures(t_window *win)
 			mlx_destroy_image(win->mlx, win->ea->img);
 		free(win->ea);
 	}
-	printf("free_textures: win->no = %p\n", (void*)win->no);
-	printf("free_textures: win->so = %p\n", (void*)win->so);
-	printf("free_textures: win->we = %p\n", (void*)win->we);
-	printf("free_textures: win->ea = %p\n", (void*)win->ea);
 }
 
 // svuota win

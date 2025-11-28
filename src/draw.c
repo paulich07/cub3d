@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 04:10:05 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/28 20:20:19 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/28 20:36:28 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,6 @@ void	draw_column_textures(t_window *win, t_ray *ray, int x)
 			+ ray->column_height / 2) * scaling;
 	while (y <= ray->draw_end)
 	{
-		// if (texture_y < 0)
-		// 	texture_y = 0;
-		// if (texture_y >= ray->texture->height)
-		// 	texture_y = ray->texture->height - 1;
 		color = get_texture_color(ray->texture, ray->texture_x, (int)texture_y);
 		put_pixel_to_img(win->win_img, x, y, color);
 		texture_y += scaling;
@@ -95,7 +91,5 @@ void	projection(t_window *win, t_ray *ray, int x)
 	if (ray->draw_end >= WINDOW_HEIGHT)
 		ray->draw_end = WINDOW_HEIGHT - 1;
 	ray->texture = get_side_texture(win, ray);
-	printf("DEBUG: ray texture: %p\n", ray->texture);
-	printf("DEBUG: ray texture width: %f\n", (double)ray->texture->width);
 	draw_column_textures(win, ray, x);
 }

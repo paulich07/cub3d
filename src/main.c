@@ -6,11 +6,21 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 08:36:59 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/11/28 19:44:33 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/28 20:39:23 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
+void	init_mlx(t_window *win)
+{
+	mlx_key_hook(win->win, key_press, win);
+	mlx_hook(win->win, KeyPress, KeyPressMask, key_press, win);
+	mlx_hook(win->win, KeyRelease, KeyReleaseMask, key_release, win);
+	mlx_hook(win->win, 17, 0, close_window, win);
+	mlx_loop_hook(win->mlx, engine, win);
+	mlx_loop(win->mlx);
+}
 
 int	main(int argc, char **argv)
 {
@@ -28,36 +38,15 @@ int	main(int argc, char **argv)
 	if (validate_all_textures(&win) == 0)
 		exit_program(&win, "Invalid texture file", 1);
 	check_and_allocate_map(&win, filename);
-	printf("DEBUG: Map height: %d, width: %d\n", win.map_height, win.map_width);
-	printf("DEBUG: Player pos: %f, %f\n", win.player_pos_x, win.player_pos_y);
 	if (!win.map || !*win.map)
 	{
 		free_paths(&win);
 		exit_program(&win, "Map not allocated properly", 1);
 	}
 	parse_map(&win);
-	printf("=== STEP 6: Initialize window ===\n");
 	init_window(&win);
-	printf("DEBUG: Window initialized successfully\n");
-	printf("=== STEP 7: Initialize image ===\n");
 	init_win_img(&win);
-	printf("DEBUG: Image initialized successfully\n");
-	printf("=== STEP 7.5: Initialize textures ===\n");
 	init_textures(&win);
-	printf("DEBUG: Textures initialized successfully\n");
-	printf("=== STEP 8: Setting up hooks ===\n");
-	mlx_key_hook(win.win, key_press, &win);
-	printf("DEBUG: Key hook set\n");
-	mlx_hook(win.win, KeyPress, KeyPressMask, key_press, &win);
-	printf("DEBUG: Key press hook set\n");
-	mlx_hook(win.win, KeyRelease, KeyReleaseMask, key_release, &win);
-	printf("DEBUG: Key release hook set\n");
-	mlx_hook(win.win, 17, 0, close_window, &win);
-	printf("DEBUG: Close window hook set\n");
-	printf("=== STEP 9: Starting main loop ===\n");
-	mlx_loop_hook(win.mlx, engine, &win);
-	printf("DEBUG: Loop hook set\n");
-	mlx_loop(win.mlx);
-	printf("DEBUG: MLX loop started\n");
+	init_mlx(&win);
 	return (0);
 }
