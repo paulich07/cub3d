@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 17:20:24 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/28 14:57:51 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/28 15:54:56 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,22 +28,26 @@ void	free_textures(t_window *win)
 {
 	if (win->no)
 	{
-		mlx_destroy_image(win->mlx, win->no);
+		if (win->no->img)
+			mlx_destroy_image(win->mlx, win->no);
 		free(win->no);
 	}
 	if (win->so)
 	{
-		mlx_destroy_image(win->mlx, win->so);
+		if (win->so->img)
+			mlx_destroy_image(win->mlx, win->so);
 		free(win->so);
 	}
 	if (win->we)
 	{
-		mlx_destroy_image(win->mlx, win->we);
+		if (win->we->img)
+			mlx_destroy_image(win->mlx, win->we);
 		free(win->we);
 	}
 	if (win->ea)
 	{
-		mlx_destroy_image(win->mlx, win->ea);
+		if (win->ea->img)
+			mlx_destroy_image(win->mlx, win->ea);
 		free(win->ea);
 	}
 }

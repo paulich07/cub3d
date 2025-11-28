@@ -36,6 +36,7 @@ LDFLAGS = -L$(LIBFT_DIR) -lft -L$(MINILIBX_DIR) -lmlx -lX11 -lXext -lm
 SRCS =	$(SRC_DIR)/main.c \
 		$(SRC_DIR)/cleaning.c \
 		$(SRC_DIR)/draw.c \
+		$(SRC_DIR)/draw_textures.c \
 		$(SRC_DIR)/engine.c \
 		$(SRC_DIR)/filename_parsing.c \
 		$(SRC_DIR)/hooks.c \
@@ -47,13 +48,13 @@ SRCS =	$(SRC_DIR)/main.c \
 		$(SRC_DIR)/player_utils.c \
 		$(SRC_DIR)/program_utils.c \
 		$(SRC_DIR)/ray.c \
-		$(SRC_DIR)/rgb_parsing.c \
 		$(SRC_DIR)/raycasting.c \
-		$(SRC_DIR)/window.c \
+		$(SRC_DIR)/rgb_parsing.c \
 		$(SRC_DIR)/flood_fill.c \
+		$(SRC_DIR)/textures_utils.c \
 		$(SRC_DIR)/utils.c \
 		$(SRC_DIR)/validate.c \
-		$(SRC_DIR)/textures.c
+		$(SRC_DIR)/window.c
 
 LIBFT = $(LIBFT_DIR)/libft.a
 MINILIBX = $(MINILIBX_DIR)/libmlx.a
