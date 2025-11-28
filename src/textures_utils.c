@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 16:53:58 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/28 20:40:32 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/28 21:01:59 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,16 @@ int	check_texture_path(char *path)
 	size_t	len;
 
 	if (!path)
-		return (write(2, "Missing Texture\n", 17), -1);
-	if (ft_strlen(path) < 4)
-		return (write(2, "Error, invalid .xmp\n", 21), -1);
-	len = ft_strlen(path) - 4;
+		return (printf("Error, Texture not specified\n"), -1);
+	if (ft_strlen(path) < 5)
+		return (printf("Error, path too short .xmp\n"), -1);
 	if (is_directory(path))
-		return (write(2, "Error, texture is a directory\n", 30), -1);
+		return (printf("Error, Directory instead of file provided\n"), -1);
+	if (!is_readable_file(path))
+		return (printf("Error, texture file not readable\n"), -1);
+	len = ft_strlen(path);
+	if (len < 4 || ft_strncmp(path + len - 4, ".xpm", 4) != 0)
+		return (write(2, "Error: Texture must be .xpm file\n", 33), -1);
 	return (1);
 }
 

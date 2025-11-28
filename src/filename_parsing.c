@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 17:21:19 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/11/28 19:46:03 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/28 21:00:41 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,23 @@ int	is_directory(char *filename)
 	return (close(fd), 1);
 }
 
+int	is_readable_file(char *filename)
+{
+	int	fd;
+
+	fd = open(filename, O_RDONLY);
+	if (fd < 0)
+		return (0);
+	return (close(fd), 1);
+}
+
 int	is_valid_file(char *filename)
 {
 	if (!is_valid_filename(filename))
 		return (printf("Invalid file format\n"), 0);
 	if (is_directory(filename))
 		return (printf("Directory instead of file provided\n"), 0);
+	if (!is_readable_file(filename))
+		return (printf("File is not readable\n"), 0);
 	return (1);
 }

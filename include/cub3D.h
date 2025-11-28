@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
+/*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 15:28:01 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/28 20:53:17 by sel-khao         ###   ########.fr       */
+/*   Updated: 2025/11/28 21:03:27 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,6 +143,7 @@ void	init_mlx(t_window *win);
 // Filename parsing
 int		is_valid_filename(char *filename);
 int		is_directory(char *filename);
+int		is_readable_file(char *filename);
 int		is_valid_file(char *filename);
 
 // Parsing
