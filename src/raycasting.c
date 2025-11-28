@@ -6,11 +6,11 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 21:41:29 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/28 19:19:35 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/28 19:46:03 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3D.h"
+#include "cub3D.h"
 
 // side = 0 muro verticale
 // ottiene distanza dal centro per una colonna di pixel

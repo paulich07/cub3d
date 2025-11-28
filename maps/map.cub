@@ -3,7 +3,7 @@ SO ./textures/south.xpm
 EA ./textures/east.xpm
 WE ./textures/west.xpm
 
-S 0,0,2
+C 20,20,2
 F 220,9,5
 
 111111111111
