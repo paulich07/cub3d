@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 16:53:58 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/28 01:48:50 by plichota         ###   ########.fr       */
+/*   Updated: 2025/11/28 14:54:24 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,12 @@ int	init_textures(t_window *win)
 	if (!win || !win->path_ea || !win->path_no
 		|| !win->path_so || !win->path_we)
 		exit_program(win, "init_textures error", 1);
+	win->no = malloc(sizeof(t_img));
+	win->so = malloc(sizeof(t_img));
+	win->we = malloc(sizeof(t_img));
+	win->ea = malloc(sizeof(t_img));
+	if (!win->no || !win->so || !win->we || !win->ea)
+		exit_program(win, "init_textures malloc error", 1);
 	load_texture(win, win->no, win->path_no);
 	load_texture(win, win->so, win->path_so);
 	load_texture(win, win->we, win->path_we);

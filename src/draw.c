@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
+/*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 04:10:05 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/28 12:08:07 by sel-khao         ###   ########.fr       */
+/*   Updated: 2025/11/28 14:21:12 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,12 +78,11 @@ int	calculate_texture_x(t_img *win, int x, int y)
 void	draw_column_textures(t_window *win, t_ray *ray, int x)
 {
 	double step;
-	
+
 	step = 1.0 * ray->texture->height / ray->column_height;
 	// capisce quale x della texture usare (prospettiva, tipo scaling orizzontale)
 	// capisce quanto stretcharla lungo la colonna (tipo scaling verticale)
 	// per ogni y della colonna prende pixel, calcola colore e lo disegna
-
 }
 
 void	projection(t_window *win, t_ray *ray, int x)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sel-khao <sel-khao@student.42.fr>          +#+  +:+       +#+        */
+/*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 15:28:01 by plichota          #+#    #+#             */
-/*   Updated: 2025/11/28 13:42:14 by sel-khao         ###   ########.fr       */
+/*   Updated: 2025/11/28 14:56:29 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,6 +174,8 @@ int		init_window(t_window *win);
 int		close_window(t_window *win);
 
 // Program utils
+void	free_paths(t_window *win);
+void	free_textures(t_window *win);
 void	exit_program(t_window *win, char *s, int error);
 
 // Ray casting
