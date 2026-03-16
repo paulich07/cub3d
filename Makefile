@@ -22,8 +22,7 @@ HEADERS_DIR = include
 LIBFT_HEADERS_DIR = $(LIBFT_DIR)/include
 
 # Links
-MINILIBX_URL = https://cdn.intra.42.fr/document/document/36820/minilibx-linux.tgz
-# MINILIBX_URL = https://github.com/42Paris/minilibx-linux.git libs/minilibx-linux
+MINILIBX_URL = https://github.com/42paris/minilibx-linux.git
 
 # Compiler
 CC = cc
@@ -82,10 +81,13 @@ $(MINILIBX): | $(MINILIBX_DIR)
 	@$(MAKE) -C $(MINILIBX_DIR) --quiet
 
 $(MINILIBX_DIR):
-	@echo "$(YELLOW)---- minilibx-linux directory not found, downloading and extracting$(RESET)"
-	@curl -L $(MINILIBX_URL) | tar xz -C $(LIB_DIR)
-	@echo "---- removing minilibx-linux.tgz"
-	@rm -f $(LIB_DIR)/minilibx-linux.tgz
+	@echo "$(YELLOW)---- minilibx-linux directory not found, cloning from git$(RESET)"
+	@git clone $(MINILIBX_URL) $(MINILIBX_DIR)
+# 	@echo "$(YELLOW)---- minilibx-linux directory not found, downloading and extracting$(RESET)"
+# 	@curl -L $(MINILIBX_URL) -o $(LIB_DIR)/minilibx-linux.tgz
+# 	@tar xzf $(LIB_DIR)/minilibx-linux.tgz -C $(LIB_DIR)
+# 	@echo "---- removing minilibx-linux.tgz"
+# 	@rm -f $(LIB_DIR)/minilibx-linux.tgz
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
 	@echo "$(YELLOW)---- Compiling $< $(RESET) ----> $@"
